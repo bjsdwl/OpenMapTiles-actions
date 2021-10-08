@@ -23,7 +23,7 @@ jobs:
             chmod +x /Poky/myscripts/*.sh
             /Poky/myscripts/extern-disk-space.sh
             /Poky/myscripts/install-yocto-need-pakages.sh
-      - name: download src
+      - name: fetch src
         run: |
           cd /Poky
           /Poky/myscripts/build-amlogic-S-64-yocto.sh
