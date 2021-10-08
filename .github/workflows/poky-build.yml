@@ -27,8 +27,8 @@ jobs:
             ls -al
             cp scripts/*.sh /Poky/myscripts
             chmod +x /Poky/myscripts/*.sh
-            ./myscripts/extern-disk-space.sh
-            ./myscripts/install-yocto-need- pakages.sh
+            /Poky/myscripts/extern-disk-space.sh
+            /Poky/myscripts/install-yocto-need- pakages.sh
             df -h
 
 
