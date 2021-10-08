@@ -20,8 +20,9 @@ jobs:
             sudo ln -sf /bin/bash /bin/sh 
             sudo mkdir -p /Poky && sudo -E chmod 777 /Poky
             sudo mkdir -p /Poky/scripts && sudo -E chmod 777 /Poky/scripts
+            pwd
             echo "WORKDIR=/Poky" >> $GITHUB_ENV
-            cd ${WORKDIR}
+            cd ${GITHUB_WORKSPACE}
             pwd
             ls -al
             cp poky-actions/scripts/*.sh /Poky/myscripts
