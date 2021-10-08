@@ -25,7 +25,7 @@ jobs:
             cd ${GITHUB_WORKSPACE}
             pwd
             ls -al
-            cp poky-actions/scripts/*.sh /Poky/myscripts
+            cp scripts/*.sh /Poky/myscripts
             chmod +x /Poky/myscripts/*.sh
             ./myscripts/extern-disk-space.sh
             ./myscripts/install-yocto-need- pakages.sh
