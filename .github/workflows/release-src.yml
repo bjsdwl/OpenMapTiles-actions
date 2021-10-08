@@ -1,0 +1,279 @@
+name: Yocto release src
+
+on:
+  workflow_dispatch:
+
+env:
+  TZ: Asia/Shanghai
+
+
+# Action will return to the startup working directory every run
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+    timeout-minutes: 800
+    if: github.event.repository.owner.id == github.event.sender.id
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: check disk
+        run: |
+          df -h
+          sudo apt-get update
+          # sudo apt-get install debian-goodies
+          # dpigs -H --lines=300
+          # sudo apt list --installed
+
+
+      # - name: Initialization environment
+      #   run: |
+      #     sudo apt-get remove aria2 ansible shellcheck rpm xorriso zsync \
+      #     clang-6.0 lldb-6.0 lld-6.0 clang-format-6.0 clang-8 lldb-8 lld-8 clang-format-8 \
+      #     clang-9 lldb-9 lld-9 clangd-9 clang-format-9 \
+      #     esl-erlang gfortran-8 gfortran-9 \
+      #     cabal-install-2.0 cabal-install-2.2 \
+      #     cabal-install-2.4 cabal-install-3.0 cabal-install-3.2 heroku imagemagick \
+      #     libmagickcore-dev libmagickwand-dev libmagic-dev ant ant-optional kubectl \
+      #     mercurial apt-transport-https mono-complete mysql-client libmysqlclient-dev \
+      #     mysql-server mssql-tools unixodbc-dev yarn bazel chrpath libssl-dev libxft-dev \
+      #     libfreetype6 libfreetype6-dev libfontconfig1 libfontconfig1-dev \
+      #     php-zmq snmp pollinate libpq-dev postgresql-client ruby-full \
+      #     sphinxsearch subversion mongodb-org -yq >/dev/null 2>&1 \
+      #     || echo "failed main apt-get remove"
+
+      #     echo "Removing large packages"
+      #     # sudo apt-get remove -y '^ghc-8.*'
+      #     sudo apt-get remove -y '^dotnet-.*'
+      #     sudo apt-get remove -y '^llvm-.*'
+      #     sudo apt-get remove -y 'php.*'
+      #     sudo apt-get remove -y azure-cli google-cloud-sdk hhvm google-chrome-stable firefox powershell
+
+      #     sudo apt-get autoremove -y >/dev/null 2>&1
+      #     sudo apt-get clean
+      #     sudo apt-get autoremove -y >/dev/null 2>&1
+      #     sudo apt-get autoclean -y >/dev/null 2>&1
+
+      #     #echo "https://github.com/actions/virtual-environments/issues/709"
+      #     sudo rm -rf "$AGENT_TOOLSDIRECTORY"
+
+      #     echo "remove big /usr/local"
+      #     sudo rm -rf "/usr/local/share/boost"
+      #     sudo rm -rf /usr/local/lib/android >/dev/null 2>&1
+      #     sudo rm -rf /usr/share/dotnet/sdk > /dev/null 2>&1
+      #     sudo rm -rf /usr/share/dotnet/shared > /dev/null 2>&1
+      #     sudo rm -rf /usr/share/swift > /dev/null 2>&1
+      #     sudo rm -rf /opt/ghc > /dev/null 2>&1
+      #     sudo swapoff -a
+      #     sudo rm -f /mnt/swapfile
+
+      #     sudo -E apt-get -qq update
+      #     sudo -E apt-get install gawk wget git-core diffstat unzip texinfo gcc-multilib build-essential \
+      #           chrpath socat cpio python3 python3-pip python3-pexpect xz-utils debianutils iputils-ping \
+      #           python3-git python3-jinja2 libegl1-mesa libsdl1.2-dev pylint3 xterm python3-subunit mesa-common-dev
+      #     sudo -E apt-get -qq autoremove --purge
+      #     sudo -E apt-get -qq clean
+      #     sudo timedatectl set-timezone "$TZ"
+
+      - name: Setup building environment
+        run: |
+            df -h
+            sudo ln -sf /bin/bash /bin/sh 
+            #/home/runner/work/meta-meson/meta-meson
+            sudo mkdir -p /Yocto && sudo -E chmod 777 /Yocto
+            sudo mkdir -p /UPReleaseDir && sudo -E chmod 777 /UPReleaseDir
+            sudo mkdir -p /DLReleaseDir && sudo -E chmod 777 /DLReleaseDir
+            echo "test release" > release.txt
+            cp release.txt /UPReleaseDir
+            echo "WORKDIR=/Yocto" >> $GITHUB_ENV
+            echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
+
+      # - name: get latest release tag
+      #   id: get-latest-release
+      #   uses: pozetroninc/github-action-get-latest-release@master
+      #   with: 
+      #     owner: ${{ github.event.repository.owner.login }}
+      #     repo: ${{ github.event.repository.name }}
+      #     excludes: prerelease, draft             
+
+      # - name: show latest release tag
+      #   run: |
+      #     echo ${{steps.get-latest-release.outputs.release}}
+
+      # - name: download release-asset
+      #   if: ${{ steps.get-latest-release.outputs.release == 'v1.2.9'}} 
+      #   uses: i3h/download-release-asset@v1
+      #   with:
+      #     owner: ${{ github.event.repository.owner.login }}
+      #     repo:  meta-meson    # ${{ github.event.repository.name }}
+      #     tag: ${{ steps.get-latest-release.outputs.release }}
+      #     # tag: ${{steps.tag.outputs.release_tag}}
+      #     file: yocto-downloads.tar.gz.*
+      #     path: /DLReleaseDir
+      #     token: ${{ secrets.YOUR_TOKEN }}
+
+      # - name: recovery src
+      #   run: |
+      #     cd /DLReleaseDir
+      #     cat yocto-downloads.tar.gz.a* | tar -zxv
+      #     ls -al
+      #     df -h
+      #     rm yocto-downloads.tar.gz.a* 
+      #     ls -al
+      #     df -h
+
+
+
+      # - name: set new release tag
+      #   id: tag
+      #   run: |
+      #     echo "::set-output name=release_tag::"v1.2.9""
+      #     # touch release.txt
+      #     # echo "* yocto deploy image for Ubuntu$(lsb_release -s -r)" >> release.txt
+      #     # echo "::set-output name=status::success"
+
+
+
+
+
+      # # - name: Display structure of downloaded files
+      # #   run: ls -R
+      # #   working-directory: path/to/artifact         
+
+      # - name: Setup yocto
+      #   run: |
+      #       cd ${WORKDIR}
+      #       git clone -b hardknott git://git.yoctoproject.org/poky
+      #       df -h
+      #       # dpigs -H --lines=300
+      #       # sudo apt list --installed
+
+      # - name: Download src
+      #   timeout-minutes: 300
+      #   continue-on-error: true     
+      #   run: |
+      #       cd ${WORKDIR}
+      #       git clone https://github.com/EzEmbedded/meta-meson.git
+      #       cp meta-meson/build-*.sh poky
+      #       cd poky
+      #       pwd
+      #       chmod +x build-*.sh
+      #       ./build-amlogic-S-64-yocto.sh
+
+      # - name: Check disk usage
+      #   run: |
+      #       df -h
+      #       # sleep 5m
+
+      # - name: Pack  src
+      #   run: |
+      #       # cd /Yocto/poky/build/tmp
+      #       # tar -Jcf yocto-image.tar.xz deploy/images
+      #       # echo "PACKAGE=/Yocto/poky/build/tmp/yocto-image.tar.xz" >> $GITHUB_ENV
+      #       cd /Yocto/poky/build
+      #       du -h --max-depth=1 /Yocto/poky/build/
+      #       du -h --max-depth=1 /Yocto/poky/build/downloads/
+      #       du -h --max-depth=1 /Yocto/poky/build/cache/
+      #       du -h --max-depth=1 /Yocto/poky/build/buildhistory/
+      #       du -h --max-depth=1 /Yocto/poky/build/sstate-cache/
+      #       du -h --max-depth=1 /Yocto/poky/build/tmp/
+
+
+      #       # cat bitbake.lock
+      #       ls -al
+      #       #rm git files
+      #       sudo rm -rf /Yocto/poky/build/downloads/git2/ >/dev/null 2>&1 
+      #       tar  cvzf - downloads/ | split -b 1024m - yocto-downloads.tar.gz.
+      #       ls -al
+      #       mv yocto-downloads.tar.gz.* /UPReleaseDir
+      #       mv collect-srcrevs.txt /UPReleaseDir
+      #       # echo "PACKAGE=/UPReleaseDir/yocto-downloads.tar.gz.aa" >> $GITHUB_ENV
+           
+      #       # ../build-amlogic-up2wetransfer.sh
+
+      # - name: Upload package
+      #   uses: actions/upload-artifact@master
+      #   with:
+      #     name: yocto deploy
+      #     path: ${{env.PACKAGE}}
+
+      - name: Remove all Releases
+        uses: dev-drprasad/delete-older-releases@v0.2.0
+        with:
+          keep_latest: 0
+          delete_tags: true
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+ 
+      # - name: Upload  release
+      #   id: release
+      #   uses: ncipollo/release-action@v1
+      #   with:
+      #     artifacts: "/UPReleaseDir/*"
+      #     token: ${{ secrets.GITHUB_TOKEN }}
+      #     tag:  ${{steps.tag.outputs.release_tag}}
+
+      - name: Upload  release1
+        id: release1
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: "/UPReleaseDir/*"
+          token: ${{ secrets.GITHUB_TOKEN }}
+          tag:  "v1.0.0"
+
+      - name: Upload  release2
+        id: release2
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: "/UPReleaseDir/*"
+          token: ${{ secrets.GITHUB_TOKEN }}
+          tag:  "v2.0.0"
+
+      - name: Upload  release3
+        id: release3
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: "/UPReleaseDir/*"
+          token: ${{ secrets.GITHUB_TOKEN }}
+          tag:  "v3.0.0"
+
+      - name: download release
+        uses: robinraju/release-downloader@v1.2
+        with:
+          repository: ${{ github.event.repository.owner.login }}/${{ github.event.repository.name }}
+          tag: "v1.0.0"
+          fileName: "*"
+          # zipBall: true
+          # tarBall: true
+          out-file-path: "DLReleaseDir"  #$GITHUB_WORKSPACE/DLReleaseDir
+      - name: show download files
+        run: |
+          cd $GITHUB_WORKSPACE
+          ls -al
+          cd $GITHUB_WORKSPACE/DLReleaseDir
+          ls -al
+
+
+      # - name: Remove one Release
+      #   uses: dev-drprasad/delete-tag-and-release@v0.2.0
+      #   with:
+      #     delete_release: true
+      #     tag_name: v1.0.0
+      #   env:
+      #     GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
+      # - name: Remove one Release
+      #   uses: dev-drprasad/delete-tag-and-release@v0.2.0
+      #   with:
+      #     delete_release: true
+      #     tag_name: v2.0.0
+      #   env:
+      #     GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
+      # - name: Remove one Release
+      #   uses: dev-drprasad/delete-tag-and-release@v0.2.0
+      #   with:
+      #     delete_release: true
+      #     tag_name: v3.0.0
+      #   env:
+      #     GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
