@@ -23,6 +23,7 @@ jobs:
             echo "WORKDIR=/Poky" >> $GITHUB_ENV
             cd ${WORKDIR}
             pwd
+            ls -al
             cp poky-actions/scripts/*.sh /Poky/myscripts
             chmod +x /Poky/myscripts/*.sh
             ./myscripts/extern-disk-space.sh
