@@ -21,7 +21,7 @@ jobs:
             sudo mkdir -p /Poky && sudo -E chmod 777 /Poky
             sudo mkdir -p /Poky/scripts && sudo -E chmod 777 /Poky/scripts
             echo "WORKDIR=/Poky" >> $GITHUB_ENV
-            cd &{WORKDIR}
+            cd ${WORKDIR}
             cp poky-actions/scripts/*.sh /Poky/myscripts
             chmod +x /Poky/myscripts/*.sh
             ./myscripts/extern-disk-space.sh
