@@ -8,7 +8,8 @@ git clone https://github.com/OSSystems/meta-browser.git -b master
 # git clone -b gatesgarth git://git.openembedded.org/meta-openembedded
 # git clone -b gatesgarth git://git.yoctoproject.org/meta-raspberrypi
 # git clone -b gatesgarth https://github.com/meta-qt5/meta-qt5
-cd /poky
+pwd 
+ls -al
 source oe-init-build-env # in build dir
 
 bitbake-layers add-layer ../meta-openembedded/meta-oe/
