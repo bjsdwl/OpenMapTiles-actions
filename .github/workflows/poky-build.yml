@@ -13,23 +13,18 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: check disk
-        run: df -h
       - name: Setup running environment
         run: |
             sudo ln -sf /bin/bash /bin/sh 
             sudo mkdir -p /Poky && sudo -E chmod 777 /Poky
             sudo mkdir -p /Poky/myscripts && sudo -E chmod 777 /Poky/myscripts
-            pwd
             echo "WORKDIR=/Poky" >> $GITHUB_ENV
-            cd ${GITHUB_WORKSPACE}
-            pwd
-            ls -al
             cp scripts/*.sh /Poky/myscripts
             chmod +x /Poky/myscripts/*.sh
             /Poky/myscripts/extern-disk-space.sh
             /Poky/myscripts/install-yocto-need-pakages.sh
-            df -h
+            cd ${WORKDIR}
+            pwd
 
 
  
