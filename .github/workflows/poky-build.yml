@@ -23,8 +23,9 @@ jobs:
             chmod +x /Poky/myscripts/*.sh
             /Poky/myscripts/extern-disk-space.sh
             /Poky/myscripts/install-yocto-need-pakages.sh
-            cd ${WORKDIR}
+            cd /Poky/myscripts
             pwd
+            ls -al
 
 
  
