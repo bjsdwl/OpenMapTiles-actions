@@ -10,7 +10,7 @@ git clone https://github.com/OSSystems/meta-browser.git -b master
 # git clone -b gatesgarth https://github.com/meta-qt5/meta-qt5
 pwd 
 ls -al
-source oe-init-build-env # in build dir
+source poky/oe-init-build-env # in build dir
 
 bitbake-layers add-layer ../meta-openembedded/meta-oe/
 bitbake-layers add-layer ../meta-meson/
