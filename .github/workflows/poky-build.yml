@@ -1,29 +1,37 @@
-name: Yocto release src
-
+name: Build-Poky
 on:
   workflow_dispatch:
-
 env:
   TZ: Asia/Shanghai
 
 
 # Action will return to the startup working directory every run
 jobs:
-  build:
+  download-src:
     runs-on: ubuntu-18.04
-    timeout-minutes: 800
     if: github.event.repository.owner.id == github.event.sender.id
 
     steps:
       - uses: actions/checkout@v2
-
       - name: check disk
+        run: df -h
+      - name: Setup running environment
         run: |
-          df -h
-          sudo apt-get update
-          # sudo apt-get install debian-goodies
-          # dpigs -H --lines=300
-          # sudo apt list --installed
+            sudo ln -sf /bin/bash /bin/sh 
+            sudo mkdir -p /Poky && sudo -E chmod 777 /Poky
+            sudo mkdir -p /Poky/scripts && sudo -E chmod 777 /Poky/scripts
+            echo "WORKDIR=/Poky" >> $GITHUB_ENV
+            cd &{WORKDIR}
+            cp poky-actions/scripts/*.sh /Poky/myscripts
+            chmod +x /Poky/myscripts/*.sh
+            ./myscripts/extern-disk-space.sh
+            ./myscripts/install-yocto-need- pakages.sh
+            df -h
+
+
+ 
+           # echo "WORKDIR=/Yocto" >> $GITHUB_ENV
+           # echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
 
 
       # - name: Initialization environment
@@ -75,18 +83,18 @@ jobs:
       #     sudo -E apt-get -qq clean
       #     sudo timedatectl set-timezone "$TZ"
 
-      - name: Setup building environment
-        run: |
-            df -h
-            sudo ln -sf /bin/bash /bin/sh 
-            #/home/runner/work/meta-meson/meta-meson
-            sudo mkdir -p /Yocto && sudo -E chmod 777 /Yocto
-            sudo mkdir -p /UPReleaseDir && sudo -E chmod 777 /UPReleaseDir
-            sudo mkdir -p /DLReleaseDir && sudo -E chmod 777 /DLReleaseDir
-            echo "test release" > release.txt
-            cp release.txt /UPReleaseDir
-            echo "WORKDIR=/Yocto" >> $GITHUB_ENV
-            echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
+      # - name: Setup building environment
+      #   run: |
+      #       df -h
+      #       sudo ln -sf /bin/bash /bin/sh 
+      #       #/home/runner/work/meta-meson/meta-meson
+      #       sudo mkdir -p /Yocto && sudo -E chmod 777 /Yocto
+      #       sudo mkdir -p /UPReleaseDir && sudo -E chmod 777 /UPReleaseDir
+      #       sudo mkdir -p /DLReleaseDir && sudo -E chmod 777 /DLReleaseDir
+      #       echo "test release" > release.txt
+      #       cp release.txt /UPReleaseDir
+      #       echo "WORKDIR=/Yocto" >> $GITHUB_ENV
+      #       echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
 
       # - name: get latest release tag
       #   id: get-latest-release
@@ -197,13 +205,13 @@ jobs:
       #     name: yocto deploy
       #     path: ${{env.PACKAGE}}
 
-      - name: Remove all Releases
-        uses: dev-drprasad/delete-older-releases@v0.2.0
-        with:
-          keep_latest: 0
-          delete_tags: true
-        env:
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      # - name: Remove all Releases
+      #   uses: dev-drprasad/delete-older-releases@v0.2.0
+      #   with:
+      #     keep_latest: 0
+      #     delete_tags: true
+      #   env:
+      #     GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
  
       # - name: Upload  release
       #   id: release
@@ -213,45 +221,45 @@ jobs:
       #     token: ${{ secrets.GITHUB_TOKEN }}
       #     tag:  ${{steps.tag.outputs.release_tag}}
 
-      - name: Upload  release1
-        id: release1
-        uses: ncipollo/release-action@v1
-        with:
-          artifacts: "/UPReleaseDir/*"
-          token: ${{ secrets.GITHUB_TOKEN }}
-          tag:  "v1.0.0"
+      # - name: Upload  release1
+      #   id: release1
+      #   uses: ncipollo/release-action@v1
+      #   with:
+      #     artifacts: "/UPReleaseDir/*"
+      #     token: ${{ secrets.GITHUB_TOKEN }}
+      #     tag:  "v1.0.0"
 
-      - name: Upload  release2
-        id: release2
-        uses: ncipollo/release-action@v1
-        with:
-          artifacts: "/UPReleaseDir/*"
-          token: ${{ secrets.GITHUB_TOKEN }}
-          tag:  "v2.0.0"
+      # - name: Upload  release2
+      #   id: release2
+      #   uses: ncipollo/release-action@v1
+      #   with:
+      #     artifacts: "/UPReleaseDir/*"
+      #     token: ${{ secrets.GITHUB_TOKEN }}
+      #     tag:  "v2.0.0"
 
-      - name: Upload  release3
-        id: release3
-        uses: ncipollo/release-action@v1
-        with:
-          artifacts: "/UPReleaseDir/*"
-          token: ${{ secrets.GITHUB_TOKEN }}
-          tag:  "v3.0.0"
+      # - name: Upload  release3
+      #   id: release3
+      #   uses: ncipollo/release-action@v1
+      #   with:
+      #     artifacts: "/UPReleaseDir/*"
+      #     token: ${{ secrets.GITHUB_TOKEN }}
+      #     tag:  "v3.0.0"
 
-      - name: download release
-        uses: robinraju/release-downloader@v1.2
-        with:
-          repository: ${{ github.event.repository.owner.login }}/${{ github.event.repository.name }}
-          tag: "v1.0.0"
-          fileName: "*"
-          # zipBall: true
-          # tarBall: true
-          out-file-path: "DLReleaseDir"  #$GITHUB_WORKSPACE/DLReleaseDir
-      - name: show download files
-        run: |
-          cd $GITHUB_WORKSPACE
-          ls -al
-          cd $GITHUB_WORKSPACE/DLReleaseDir
-          ls -al
+      # - name: download release
+      #   uses: robinraju/release-downloader@v1.2
+      #   with:
+      #     repository: ${{ github.event.repository.owner.login }}/${{ github.event.repository.name }}
+      #     tag: "v1.0.0"
+      #     fileName: "*"
+      #     # zipBall: true
+      #     # tarBall: true
+      #     out-file-path: "DLReleaseDir"  #$GITHUB_WORKSPACE/DLReleaseDir
+      # - name: show download files
+      #   run: |
+      #     cd $GITHUB_WORKSPACE
+      #     ls -al
+      #     cd $GITHUB_WORKSPACE/DLReleaseDir
+      #     ls -al
 
 
       # - name: Remove one Release
