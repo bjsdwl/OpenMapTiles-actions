@@ -59,7 +59,7 @@ jobs:
           chmod +x /Poky/myscripts/*.sh
           /Poky/myscripts/extern-disk-space.sh
           /Poky/myscripts/install-yocto-need-pakages.sh
-      - name: get src release
+      - name: download src release
         uses: robinraju/release-downloader@v1.2
         with:
           repository: ${{ github.event.repository.owner.login }}/${{ github.event.repository.name }}
