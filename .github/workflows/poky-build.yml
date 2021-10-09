@@ -87,7 +87,7 @@ jobs:
         run: |
           cd $GITHUB_WORKSPACE/DLReleaseDir
           cat poky-sstate-cache.tar.gz.a* | tar -zxv
-          mv sstate-cache/* /Sstate-cache
+          mv Sstate-cache/* /Sstate-cache
           rm -rf *            
       - name: build poky
         timeout-minutes: 300
@@ -163,7 +163,7 @@ jobs:
         run: |
           cd $GITHUB_WORKSPACE/DLReleaseDir
           cat poky-sstate-cache.tar.gz.a* | tar -zxv
-          mv sstate-cache/* /Sstate-cache
+          mv Sstate-cache/* /Sstate-cache
           rm -rf *            
       - name: build poky
         timeout-minutes: 300
@@ -239,7 +239,7 @@ jobs:
         run: |
           cd $GITHUB_WORKSPACE/DLReleaseDir
           cat poky-sstate-cache.tar.gz.a* | tar -zxv
-          mv sstate-cache/* /Sstate-cache
+          mv Sstate-cache/* /Sstate-cache
           rm -rf *            
       - name: build poky
         timeout-minutes: 300
