@@ -17,6 +17,7 @@ jobs:
         run: |
             sudo ln -sf /bin/bash /bin/sh 
             sudo mkdir -p /Poky && sudo -E chmod 777 /Poky
+            sudo mkdir -p /UpReleaseArtifact && sudo -E chmod 777 /UpReleaseArtifact
             sudo mkdir -p /Poky/myscripts && sudo -E chmod 777 /Poky/myscripts
             echo "WORKDIR=/Poky" >> $GITHUB_ENV
             cp scripts/*.sh /Poky/myscripts
@@ -28,14 +29,31 @@ jobs:
           cd /Poky
           /Poky/myscripts/build-amlogic-S-64-yocto.sh
           pwd
-          ls build/downloads -al
+          cd build
+          pwd
+          ls -al
+          ls downloads -al
 
-
-
- 
-           # echo "WORKDIR=/Yocto" >> $GITHUB_ENV
-           # echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
-
+          sudo rm -rf build/downloads/git2/ >/dev/null 2>&1 
+          tar  cvzf - downloads/ | split -b 1024m - poky-src.tar.gz.
+          ls -al
+          mv poky-src.tar.gz.* /UpReleaseArtifact
+          mv collect-srcrevs.txt /UpReleaseArtifact
+          ls /UpReleaseArtifact -al
+      - name: clear src release    #v1.0.0
+        uses: dev-drprasad/delete-tag-and-release@v0.2.0
+        with:
+          delete_release: true
+          tag_name: v1.0.0
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      - name: release src    #v1.0.0
+        id: release src
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: "/UpReleaseArtifact/*"
+          token: ${{ secrets.GITHUB_TOKEN }}
+          tag:  "v1.0.0"
 
       
 
