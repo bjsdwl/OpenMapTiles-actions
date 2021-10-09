@@ -78,9 +78,6 @@ jobs:
           cd /Dlsrc
           pwd
           ls
-          cd downloads
-          pwd
-          ls
           df -h
       
 
