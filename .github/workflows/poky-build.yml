@@ -21,7 +21,7 @@ jobs:
   #         chmod +x /Poky/myscripts/*.sh
   #         /Poky/myscripts/extern-disk-space.sh
   #         /Poky/myscripts/install-yocto-need-pakages.sh
-  #     - name: fetch park pakage src 
+  #     - name: fetch pack pakage src 
   #       run: |
   #         cd /Poky
   #         /Poky/myscripts/poky-project-fetch-src.sh
@@ -68,12 +68,14 @@ jobs:
           # zipBall: true
           # tarBall: true
           out-file-path: "DLReleaseDir"  #$GITHUB_WORKSPACE/DLReleaseDir
-      - name: show download files
+      - name: recovery download files
         run: |
-          cd $GITHUB_WORKSPACE
-          ls -al
           cd $GITHUB_WORKSPACE/DLReleaseDir
-          ls -al
+          cat poky-src.tar.gz.a* | tar -zxv
+          mv downloads/* /Dlsrc
+          rm -rf *
+          ls /Dlsrc -al
+          df -h
       
 
       # - name: Setup building environment
