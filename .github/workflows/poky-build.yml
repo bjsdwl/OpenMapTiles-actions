@@ -116,6 +116,7 @@ jobs:
           tag:  "v2.0.0"    #v2.0.0 is Sstate-cache
 
   build2:
+    needs: build1
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v2
@@ -187,6 +188,7 @@ jobs:
           tag:  "v2.0.0"    #v2.0.0 is Sstate-cache
 
   build3:
+    needs: build2
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v2
