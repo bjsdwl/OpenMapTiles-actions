@@ -65,20 +65,27 @@ jobs:
           repository: ${{ github.event.repository.owner.login }}/${{ github.event.repository.name }}
           tag: "v1.0.0"    #v1.0.0 is src
           fileName: "*"
-          # zipBall: true
-          # tarBall: true
           out-file-path: "DLReleaseDir"  #$GITHUB_WORKSPACE/DLReleaseDir
-      - name: recovery download files
+      - name: recovery src download files
         run: |
           cd $GITHUB_WORKSPACE/DLReleaseDir
           cat poky-src.tar.gz.a* | tar -zxv
           mv downloads/* /Dlsrc
           mv collect-srcrevs.txt /Dlsrc
           rm -rf *
-          cd /Dlsrc
-          pwd
-          ls
-          df -h
+      - name: download sstate-cache release
+        uses: robinraju/release-downloader@v1.2
+        with:
+          repository: ${{ github.event.repository.owner.login }}/${{ github.event.repository.name }}
+          tag: "v2.0.0"    #v2.0.0 is sstate-cache
+          fileName: "*"
+          out-file-path: "DLReleaseDir"  #$GITHUB_WORKSPACE/DLReleaseDir
+      - name: recovery sstate-cache download files
+        run: |
+          cd $GITHUB_WORKSPACE/DLReleaseDir
+          cat poky-sstate-cache.tar.gz.a* | tar -zxv
+          mv downloads/* /Sstate-cache
+          rm -rf * 
       
 
       # - name: Setup building environment
