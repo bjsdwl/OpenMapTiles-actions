@@ -7,7 +7,7 @@ env:
 
 # Action will return to the startup working directory every run
 jobs:
-  download-src:
+  fetch-src:
     runs-on: ubuntu-18.04
     # if: github.event.repository.owner.id == github.event.sender.id
 
