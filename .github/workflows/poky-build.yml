@@ -66,7 +66,7 @@ jobs:
           tag: "v1.0.0"    #v1.0.0 is src
           fileName: "*"
           out-file-path: "DLReleaseDir"  #$GITHUB_WORKSPACE/DLReleaseDir
-      - name: recovery src download files
+      - name: recovery src  files
         run: |
           cd $GITHUB_WORKSPACE/DLReleaseDir
           cat poky-src.tar.gz.a* | tar -zxv
@@ -74,13 +74,15 @@ jobs:
           mv collect-srcrevs.txt /Dlsrc
           rm -rf *
       - name: download sstate-cache release
+        continue-on-error: true
         uses: robinraju/release-downloader@v1.2
         with:
           repository: ${{ github.event.repository.owner.login }}/${{ github.event.repository.name }}
           tag: "v2.0.0"    #v2.0.0 is sstate-cache
           fileName: "*"
           out-file-path: "DLReleaseDir"  #$GITHUB_WORKSPACE/DLReleaseDir
-      - name: recovery sstate-cache download files
+      - name: recovery sstate-cache  files
+        continue-on-error: true
         run: |
           cd $GITHUB_WORKSPACE/DLReleaseDir
           cat poky-sstate-cache.tar.gz.a* | tar -zxv
