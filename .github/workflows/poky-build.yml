@@ -95,6 +95,7 @@ jobs:
           cd /Poky
           /Poky/myscripts/poky-project-build.sh
       - name: pack sstate-cache
+        run: |
           cd /Poky/build       
           tar  cvzf - sstate-cache/ | split -b 1024m - poky-sstate-cache.tar.gz.
           mv poky-src.tar.gz.* /Sstate-cache-Artifact
