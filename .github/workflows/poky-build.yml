@@ -98,7 +98,7 @@ jobs:
       - name: pack sstate-cache
         run: |
           cd /Poky/build       
-          tar  cvzf - sstate-cache/ | split -b 1024m - poky-sstate-cache.tar.gz.
+          tar  cvzf - /Sstate-cache/ | split -b 1024m - poky-sstate-cache.tar.gz.
           mv poky-src.tar.gz.* /Sstate-cache-Artifact
           rm -rf *
       - name: clear sstate-cache release    #v2.0.0 is sstate-cache
