@@ -4,52 +4,76 @@ on:
 env:
   TZ: Asia/Shanghai
 
-
-# Action will return to the startup working directory every run
 jobs:
-  fetch-src:
-    runs-on: ubuntu-18.04
-    # if: github.event.repository.owner.id == github.event.sender.id
+  # fetch-src:
+  #   runs-on: ubuntu-18.04
+  #   # if: github.event.repository.owner.id == github.event.sender.id
 
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - name: Initialization running environment
+  #       run: |
+  #         sudo ln -sf /bin/bash /bin/sh 
+  #         sudo mkdir -p /Poky && sudo -E chmod 777 /Poky
+  #         sudo mkdir -p /UpReleaseArtifact && sudo -E chmod 777 /UpReleaseArtifact
+  #         sudo mkdir -p /Poky/myscripts && sudo -E chmod 777 /Poky/myscripts
+  #         cp scripts/*.sh /Poky/myscripts
+  #         chmod +x /Poky/myscripts/*.sh
+  #         /Poky/myscripts/extern-disk-space.sh
+  #         /Poky/myscripts/install-yocto-need-pakages.sh
+  #     - name: fetch park pakage src 
+  #       run: |
+  #         cd /Poky
+  #         /Poky/myscripts/poky-project-fetch-src.sh
+  #         cd build       
+  #         sudo rm -rf downloads/git2/ >/dev/null 2>&1 
+  #         tar  cvzf - downloads/ | split -b 1024m - poky-src.tar.gz.
+  #         mv poky-src.tar.gz.* /UpReleaseArtifact
+  #         mv collect-srcrevs.txt /UpReleaseArtifact
+  #     - name: clear src release    #v1.0.0 is src
+  #       uses: dev-drprasad/delete-tag-and-release@v0.2.0
+  #       with:
+  #         delete_release: true
+  #         tag_name: v1.0.0   #v1.0.0 is src
+  #       env:
+  #         GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+  #     - name: release src    #v1.0.0 is src
+  #       uses: ncipollo/release-action@v1
+  #       with:
+  #         artifacts: "/UpReleaseArtifact/*"
+  #         token: ${{ secrets.GITHUB_TOKEN }}
+  #         tag:  "v1.0.0"    #v1.0.0 is src
+
+  build:
+    runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v2
       - name: Initialization running environment
         run: |
-            sudo ln -sf /bin/bash /bin/sh 
-            sudo mkdir -p /Poky && sudo -E chmod 777 /Poky
-            sudo mkdir -p /UpReleaseArtifact && sudo -E chmod 777 /UpReleaseArtifact
-            sudo mkdir -p /Poky/myscripts && sudo -E chmod 777 /Poky/myscripts
-            echo "WORKDIR=/Poky" >> $GITHUB_ENV
-            cp scripts/*.sh /Poky/myscripts
-            chmod +x /Poky/myscripts/*.sh
-            /Poky/myscripts/extern-disk-space.sh
-            /Poky/myscripts/install-yocto-need-pakages.sh
-      - name: fetch park pakage src 
+          sudo ln -sf /bin/bash /bin/sh 
+          sudo mkdir -p /Poky && sudo -E chmod 777 /Poky
+          sudo mkdir -p /Dlsrc && sudo -E chmod 777 /Dlsrc
+          sudo mkdir -p /Sstate-cache && sudo -E chmod 777 /Sstate-cache         
+          sudo mkdir -p /Poky/myscripts && sudo -E chmod 777 /Poky/myscripts
+          cp scripts/*.sh /Poky/myscripts
+          chmod +x /Poky/myscripts/*.sh
+          /Poky/myscripts/extern-disk-space.sh
+          /Poky/myscripts/install-yocto-need-pakages.sh
+      - name: get src release
+        uses: robinraju/release-downloader@v1.2
+        with:
+          repository: ${{ github.event.repository.owner.login }}/${{ github.event.repository.name }}
+          tag: "v1.0.0"    #v1.0.0 is src
+          fileName: "*"
+          # zipBall: true
+          # tarBall: true
+          out-file-path: "DLReleaseDir"  #$GITHUB_WORKSPACE/DLReleaseDir
+      - name: show download files
         run: |
-          cd /Poky
-          /Poky/myscripts/poky-project-config.sh
-          cd build       
-          ls downloads -al
-          sudo rm -rf downloads/git2/ >/dev/null 2>&1 
-          ls downloads -al
-          tar  cvzf - downloads/ | split -b 1024m - poky-src.tar.gz.
+          cd $GITHUB_WORKSPACE
           ls -al
-          mv poky-src.tar.gz.* /UpReleaseArtifact
-          mv collect-srcrevs.txt /UpReleaseArtifact
-      - name: clear src release    #v1.0.0
-        uses: dev-drprasad/delete-tag-and-release@v0.2.0
-        with:
-          delete_release: true
-          tag_name: v1.0.0
-        env:
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-      - name: release src    #v1.0.0
-        uses: ncipollo/release-action@v1
-        with:
-          artifacts: "/UpReleaseArtifact/*"
-          token: ${{ secrets.GITHUB_TOKEN }}
-          tag:  "v1.0.0"
-
+          cd $GITHUB_WORKSPACE/DLReleaseDir
+          ls -al
       
 
       # - name: Setup building environment
