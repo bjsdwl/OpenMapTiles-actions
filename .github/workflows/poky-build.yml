@@ -29,6 +29,9 @@ jobs:
           cd /Poky
           /Poky/myscripts/build-amlogic-S-64-yocto.sh
           pwd
+          ls -al
+          ls ../ al
+          ls ../../ al
           cd build
           pwd
           ls -al
