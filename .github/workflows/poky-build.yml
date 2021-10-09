@@ -73,8 +73,14 @@ jobs:
           cd $GITHUB_WORKSPACE/DLReleaseDir
           cat poky-src.tar.gz.a* | tar -zxv
           mv downloads/* /Dlsrc
+          mv collect-srcrevs.txt /Dlsrc
           rm -rf *
-          ls /Dlsrc -al
+          cd /Dlsrc
+          pwd
+          ls
+          cd downloads
+          pwd
+          ls
           df -h
       
 
