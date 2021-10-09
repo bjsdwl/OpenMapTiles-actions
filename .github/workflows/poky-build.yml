@@ -83,6 +83,7 @@ jobs:
           fileName: "*"
           out-file-path: "DLReleaseDir"  #$GITHUB_WORKSPACE/DLReleaseDir
       - name: recovery sstate-cache  files
+        continue-on-error: true
         run: |
           cd $GITHUB_WORKSPACE/DLReleaseDir
           cat poky-sstate-cache.tar.gz.a* | tar -zxv
