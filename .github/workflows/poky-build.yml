@@ -27,10 +27,8 @@ jobs:
       - name: fetch park pakage src 
         run: |
           cd /Poky
-          /Poky/myscripts/build-amlogic-S-64-yocto.sh
-          cd build
-          bitbake amlogic-image-headless-sd --runonly=fetch
-          buildhistory-collect-srcrevs -a > collect-srcrevs.txt         
+          /Poky/myscripts/poky-project-config.sh
+          cd build       
           ls downloads -al
           sudo rm -rf build/downloads/git2/ >/dev/null 2>&1 
           ls downloads -al
@@ -38,7 +36,6 @@ jobs:
           ls -al
           mv poky-src.tar.gz.* /UpReleaseArtifact
           mv collect-srcrevs.txt /UpReleaseArtifact
-          ls /UpReleaseArtifact -al
       - name: clear src release    #v1.0.0
         uses: dev-drprasad/delete-tag-and-release@v0.2.0
         with:
