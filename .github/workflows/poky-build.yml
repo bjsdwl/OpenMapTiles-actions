@@ -24,20 +24,16 @@ jobs:
             chmod +x /Poky/myscripts/*.sh
             /Poky/myscripts/extern-disk-space.sh
             /Poky/myscripts/install-yocto-need-pakages.sh
-      - name: fetch src
+      - name: fetch park pakage src 
         run: |
           cd /Poky
           /Poky/myscripts/build-amlogic-S-64-yocto.sh
-          pwd
-          ls -al
-          ls ../ -al
-          ls ../../ -al
           cd build
-          pwd
-          ls -al
+          bitbake amlogic-image-headless-sd --runonly=fetch
+          buildhistory-collect-srcrevs -a > collect-srcrevs.txt         
           ls downloads -al
-
           sudo rm -rf build/downloads/git2/ >/dev/null 2>&1 
+          ls downloads -al
           tar  cvzf - downloads/ | split -b 1024m - poky-src.tar.gz.
           ls -al
           mv poky-src.tar.gz.* /UpReleaseArtifact

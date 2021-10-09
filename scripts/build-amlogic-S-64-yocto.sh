@@ -11,6 +11,7 @@ git clone https://github.com/OSSystems/meta-browser.git -b master
 pwd 
 ls -al
 source poky/oe-init-build-env # in build dir
+pwd
 
 bitbake-layers add-layer ../meta-openembedded/meta-oe/
 bitbake-layers add-layer ../meta-meson/
@@ -55,5 +56,3 @@ cat conf/bblayers.conf
 # bitbake chromium --runonly=fetch
 # bitbake amlogic-image-headless-sd  --runonly=fetch
 # buildhistory-collect-srcrevs -a > collect-srcrevs.txt
-bitbake amlogic-image-headless-sd --runonly=fetch
-buildhistory-collect-srcrevs -a > collect-srcrevs.txt
