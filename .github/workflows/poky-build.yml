@@ -88,6 +88,10 @@ jobs:
           cd $GITHUB_WORKSPACE/DLReleaseDir
           cat poky-sstate-cache.tar.gz.a* | tar -zxv
           mv Sstate-cache/ /Sstate-cache
+          echo "$GITHUB_WORKSPACE/DLReleaseDir/Sstate-cache"
+          ls
+          echo "/Sstate-cache"
+          ls /Sstate-cache          
           rm -rf *            
       - name: build poky
         timeout-minutes: 30
