@@ -97,6 +97,7 @@ jobs:
           /Poky/myscripts/poky-project-build.sh
       - name: pack sstate-cache
         run: |
+          df -h
           cd /Poky/build       
           tar  cvzf - /Sstate-cache/ | split -b 1024m - poky-sstate-cache.tar.gz.
           mv poky-sstate-cache.tar.gz.* /Sstate-cache-Artifact
@@ -172,6 +173,7 @@ jobs:
           /Poky/myscripts/poky-project-build.sh
       - name: pack sstate-cache
         run: |
+          df -h
           cd /Poky/build       
           tar  cvzf - /Sstate-cache/ | split -b 1024m - poky-sstate-cache.tar.gz.
           mv poky-sstate-cache.tar.gz.* /Sstate-cache-Artifact
@@ -243,6 +245,7 @@ jobs:
         timeout-minutes: 300
         continue-on-error: true
         run: |
+          df -h
           cd /Poky
           /Poky/myscripts/poky-project-build.sh
       - name: pack sstate-cache
