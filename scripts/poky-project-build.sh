@@ -138,7 +138,7 @@ cat conf/bblayers.conf
 #bitbake qtbase
 #bitbake core-image-base -c populate_sdk
 # buildhistory-collect-srcrevs -a
-bitbake amlogic-image-headless-sd
+bitbake amlogic-image-headless-sd  -c populate_sdk_ext
 # bitbake chromium --runonly=fetch
 # bitbake amlogic-image-headless-sd  --runonly=fetch
 # buildhistory-collect-srcrevs -a > collect-srcrevs.txt
