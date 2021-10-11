@@ -45,6 +45,7 @@ jobs:
           tag:  "v1.0.0"    #v1.0.0 is src
 
   build1:
+    needs: fetch-src
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v2
