@@ -31,7 +31,7 @@ sed -i '$a\PACKAGECONFIG_append_pn-chromium = " component-build"'  conf/local.co
 sed -i '$a\PACKAGECONFIG_append_pn-chromium = " proprietary-codecs"'  conf/local.conf
 sed -i '$a\PACKAGECONFIG_append_pn-chromium = " use-vaapi"'  conf/local.conf
 sed -i '$a\INHERIT += "rm_work"'  conf/local.conf
-sed -i '$a\IMAGE_INSTALL_append = " chromium-x11"'  conf/local.conf
+# sed -i '$a\IMAGE_INSTALL_append = " chromium-x11"'  conf/local.conf
 
 sed -i '$a\SOURCE_MIRROR_URL ?= "file:///Dlsrc/"'  conf/local.conf
 sed -i '$a\INHERIT += "own-mirrors"'  conf/local.conf
