@@ -43,6 +43,7 @@ sed -i '$a\BB_NO_NETWORK = "1"'  conf/local.conf
 
 sed -i '$a\SSTATE_DIR ?= "/Sstate-cache"'  conf/local.conf
 cat /Dlsrc/collect-srcrevs.txt >> conf/local.conf
+
 # sed -i '$a\SRCREV_pn-binutils = "7651a4871c225925ffdfda0a8c91a6ed370cd9a1"'  conf/local.conf
 # sed -i '$a\SRCREV_pn-btrfs-tools = "f2ffce38b9c1477a7350bfe165f0e34b9bde40f5"'  conf/local.conf
 # sed -i '$a\SRCREV_pn-bzip2 = "f9061c030a25de5b6829e1abf373057309c734c0"'  conf/local.conf
