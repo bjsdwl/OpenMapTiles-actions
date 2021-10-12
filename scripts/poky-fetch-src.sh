@@ -36,6 +36,8 @@ sed -i '$a\PACKAGECONFIG_append_pn-chromium = " proprietary-codecs"'  conf/local
 sed -i '$a\PACKAGECONFIG_append_pn-chromium = " use-vaapi"'  conf/local.conf
 sed -i '$a\PACKAGECONFIG_append_pn-gstreamer1.0-plugins-good = "vpx wavpack libv4l2"'  conf/local.conf
 sed -i '$a\LICENSE_FLAGS_WHITELIST_append = " commercial_mpg123"'  conf/local.conf
+sed -i '$a\LICENSE_FLAGS_WHITELIST += " commercial "'  conf/local.conf
+
 
 sed -i '$a\INHERIT += "rm_work"'  conf/local.conf
 sed -i '$a\IMAGE_INSTALL_append = " chromium-x11"'  conf/local.conf
