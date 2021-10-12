@@ -34,13 +34,13 @@ sed -i '$a\BUILDHISTORY_COMMIT = "1"'  conf/local.conf
 sed -i '$a\PACKAGECONFIG_append_pn-chromium = " component-build"'  conf/local.conf
 sed -i '$a\PACKAGECONFIG_append_pn-chromium = " proprietary-codecs"'  conf/local.conf
 sed -i '$a\PACKAGECONFIG_append_pn-chromium = " use-vaapi"'  conf/local.conf
-sed -i '$a\PACKAGECONFIG_append_pn-gstreamer1.0-plugins-good = "vpx wavpack libv4l2"'  conf/local.conf
+# sed -i '$a\PACKAGECONFIG_append_pn-gstreamer1.0-plugins-good = "vpx wavpack libv4l2"'  conf/local.conf
 
 sed -i '$a\INHERIT += "rm_work"'  conf/local.conf
 sed -i '$a\IMAGE_INSTALL_append = " chromium-x11"'  conf/local.conf
 sed -i '$a\IMAGE_INSTALL_append += " gstreamer"'  conf/local.conf
 
-sed -i '$a\PREFERRED_VERSION_gstreamer1.0-plugins-good = "git"'  conf/local.conf
+# sed -i '$a\PREFERRED_VERSION_gstreamer1.0-plugins-good = "git"'  conf/local.conf
 
 cat conf/local.conf
 
