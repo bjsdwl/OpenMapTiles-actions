@@ -40,7 +40,7 @@ sed -i '$a\LICENSE_FLAGS_WHITELIST_append = " commercial_mpg123"'  conf/local.co
 sed -i '$a\INHERIT += "rm_work"'  conf/local.conf
 sed -i '$a\IMAGE_INSTALL_append = " chromium-x11"'  conf/local.conf
 sed -i '$a\IMAGE_INSTALL_append += " gstreamer1.0-plugins-good"'  conf/local.conf
-sed -i '$a\IMAGE_INSTALL += " ffmpeg"'  conf/local.conf
+sed -i '$a\IMAGE_INSTALL_append += " ffmpeg"'  conf/local.conf
 
 
 
