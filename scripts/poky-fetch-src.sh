@@ -42,7 +42,7 @@ sed -i '$a\LICENSE_FLAGS_WHITELIST += " commercial commercial_libav commercial_x
 sed -i '$a\INHERIT += "rm_work"'  conf/local.conf
 sed -i '$a\IMAGE_INSTALL_append = " chromium-x11"'  conf/local.conf
 sed -i '$a\IMAGE_INSTALL_append += " gstreamer1.0-plugins-good"'  conf/local.conf
-sed -i '$a\IMAGE_INSTALL_append += " ffmpeg vlc x11vnc"'  conf/local.conf
+sed -i '$a\IMAGE_INSTALL_append += " ffmpeg  x11vnc"'  conf/local.conf
 
 
 
