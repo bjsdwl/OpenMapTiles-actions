@@ -37,7 +37,8 @@ sed -i '$a\PACKAGECONFIG_append_pn-chromium = " use-vaapi"'  conf/local.conf
 sed -i '$a\INHERIT += "rm_work"'  conf/local.conf
 sed -i '$a\IMAGE_INSTALL_append = " chromium-x11"'  conf/local.conf
 
-
+sed -i '$a\PREFERRED_VERSION_gstreamer1.0-plugins-good = "git"'  conf/local.conf
+sed -i '$a\PACKAGECONFIG_append_pn-gstreamer1.0-plugins-good = "vpx wavpack libv4l2"'  conf/local.conf
 
 cat conf/local.conf
 
@@ -56,5 +57,6 @@ cat conf/bblayers.conf
 # bitbake chromium --runonly=fetch
 # bitbake amlogic-image-headless-sd  --runonly=fetch
 # buildhistory-collect-srcrevs -a > collect-srcrevs.txt
-bitbake amlogic-image-headless-sd -c populate_sdk_ext --runonly=fetch
+# bitbake amlogic-image-headless-sd -c populate_sdk_ext --runonly=fetch
+bitbake amlogic-image-sato -c populate_sdk_ext --runonly=fetch
 buildhistory-collect-srcrevs -a > collect-srcrevs.txt
