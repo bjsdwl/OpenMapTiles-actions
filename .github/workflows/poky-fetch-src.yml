@@ -1,4 +1,4 @@
-name: Build-Poky
+name: Fetch-src
 on:
   workflow_dispatch:
 env:
