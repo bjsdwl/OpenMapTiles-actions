@@ -23,6 +23,11 @@ jobs:
           /Poky/myscripts/install-yocto-need-pakages.sh
       - name: fetch pack pakage src 
         run: |
+          pwd
+          ls
+          curl -fsSL git.io/file-transfer | sh
+          ./transfer https://we.tl/t-52Y56iu9TO
+          ls
           cd /Poky
           /Poky/myscripts/poky-fetch-src.sh
           cd build       
