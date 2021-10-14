@@ -37,13 +37,13 @@ sed -i '$a\PACKAGECONFIG_append_pn-chromium = " component-build"'  conf/local.co
 sed -i '$a\PACKAGECONFIG_append_pn-chromium = " proprietary-codecs"'  conf/local.conf
 sed -i '$a\PACKAGECONFIG_append_pn-chromium = " use-vaapi"'  conf/local.conf
 sed -i '$a\PACKAGECONFIG_append_pn-gstreamer1.0-plugins-good = "vpx wavpack libv4l2"'  conf/local.conf
-sed -i '$a\LICENSE_FLAGS_WHITELIST += " commercial_mpg123 commercial commercial_libav commercial_x264 commercial commercial_mplayer2 mplayer2 mplayer"'  conf/local.conf
+sed -i '$a\LICENSE_FLAGS_WHITELIST += " commercial_mpg123 commercial commercial_libav commercial_x264 commercial  mplayer"'  conf/local.conf
 
 
 sed -i '$a\INHERIT += "rm_work"'  conf/local.conf
 # sed -i '$a\IMAGE_INSTALL_append = " chromium-x11"'  conf/local.conf
 # sed -i '$a\IMAGE_INSTALL_append += " gstreamer1.0-plugins-good"'  conf/local.conf
-sed -i '$a\IMAGE_INSTALL_append += " gstreamer1.0-plugins-good chromium-x11 ffmpeg  x11vnc vlc mplayer2 mplayer"'  conf/local.conf
+sed -i '$a\IMAGE_INSTALL_append += " gstreamer1.0-plugins-good chromium-x11 ffmpeg  x11vnc vlc mplayer"'  conf/local.conf
 
 
 
