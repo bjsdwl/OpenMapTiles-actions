@@ -14,6 +14,7 @@ source poky/oe-init-build-env # in build dir
 pwd
 
 bitbake-layers add-layer ../meta-openembedded/meta-oe/
+bitbake-layers add-layer ../meta-openembedded/meta-multimedia/	
 bitbake-layers add-layer ../meta-meson/
 bitbake-layers add-layer ../meta-clang/
 bitbake-layers add-layer ../meta-python2/
@@ -41,7 +42,7 @@ sed -i '$a\LICENSE_FLAGS_WHITELIST += " commercial_mpg123 commercial commercial_
 sed -i '$a\INHERIT += "rm_work"'  conf/local.conf
 # sed -i '$a\IMAGE_INSTALL_append = " chromium-x11"'  conf/local.conf
 # sed -i '$a\IMAGE_INSTALL_append += " gstreamer1.0-plugins-good"'  conf/local.conf
-sed -i '$a\IMAGE_INSTALL_append += " gstreamer1.0-plugins-good chromium-x11 ffmpeg  x11vnc "'  conf/local.conf
+sed -i '$a\IMAGE_INSTALL_append += " gstreamer1.0-plugins-good chromium-x11 ffmpeg  x11vnc vlc mplayer"'  conf/local.conf
 
 
 
