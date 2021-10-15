@@ -43,18 +43,10 @@ sed -i '$a\PACKAGECONFIG_append_pn-chromium = " use-vaapi"'  conf/local.conf
 sed -i '$a\PACKAGECONFIG_append_pn-gstreamer1.0-plugins-good = "vpx wavpack libv4l2"'  conf/local.conf
 sed -i '$a\LICENSE_FLAGS_WHITELIST += " commercial_mpg123 commercial commercial_libav commercial_x264 commercial"'  conf/local.conf
 
-
 sed -i '$a\INHERIT += "rm_work"'  conf/local.conf
-# sed -i '$a\IMAGE_INSTALL_append = " chromium-x11"'  conf/local.conf
-# sed -i '$a\IMAGE_INSTALL_append += " gstreamer1.0-plugins-good"'  conf/local.conf
 sed -i '$a\IMAGE_INSTALL_append += " gstreamer1.0-plugins-good chromium-x11 ffmpeg  x11vnc vlc mpv kodi"'  conf/local.conf
 
-
-
-# sed -i '$a\PREFERRED_VERSION_gstreamer1.0-plugins-good = "git"'  conf/local.conf
-
 cat conf/local.conf
-
 cat conf/bblayers.conf
 
 
