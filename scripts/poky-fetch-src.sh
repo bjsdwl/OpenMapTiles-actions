@@ -5,6 +5,7 @@ git clone  git://git.openembedded.org/meta-openembedded -b hardknott
 git  clone git://github.com/kraj/meta-clang -b hardknott 
 git clone git://git.openembedded.org/meta-python2 -b hardknott 
 git clone https://github.com/OSSystems/meta-browser.git -b master
+git clone https://github.com/koenkooi/meta-kodi.git -b sumo
 # git clone -b gatesgarth git://git.openembedded.org/meta-openembedded
 # git clone -b gatesgarth git://git.yoctoproject.org/meta-raspberrypi
 # git clone -b gatesgarth https://github.com/meta-qt5/meta-qt5
@@ -18,6 +19,7 @@ bitbake-layers add-layer ../meta-openembedded/meta-python/
 bitbake-layers add-layer ../meta-openembedded/meta-multimedia/
 bitbake-layers add-layer ../meta-openembedded/meta-networking/
 bitbake-layers add-layer ../meta-openembedded/meta-filesystems/	
+bitbake-layers add-layer ../meta-kodi/	
 bitbake-layers add-layer ../meta-meson/
 bitbake-layers add-layer ../meta-clang/
 bitbake-layers add-layer ../meta-python2/
