@@ -49,7 +49,7 @@ sed -i '$a\LICENSE_FLAGS_WHITELIST += " commercial_mpg123 commercial commercial_
 sed -i '$a\DISTRO_FEATURES_append = " virtualization"'  conf/local.conf
 
 sed -i '$a\INHERIT += "rm_work"'  conf/local.conf
-sed -i '$a\IMAGE_INSTALL_append += " gstreamer1.0-plugins-good chromium-x11 ffmpeg  x11vnc vlc mpv kodi podman podman-compose crun cgroup-lite"'  conf/local.conf
+sed -i '$a\IMAGE_INSTALL_append += " gstreamer1.0-plugins-good chromium-x11 ffmpeg  x11vnc vlc mpv kodi podman podman-compose crun cgroup-lite ca-certificates python3-setuptools python3-pyyaml python3-json"'  conf/local.conf
 
 cat conf/local.conf
 cat conf/bblayers.conf
