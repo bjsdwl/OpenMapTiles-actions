@@ -14,16 +14,17 @@ ls -al
 source poky/oe-init-build-env # in build dir
 pwd
 
-bitbake-layers add-layer ../meta-openembedded/meta-oe/
-bitbake-layers add-layer ../meta-openembedded/meta-python/
-bitbake-layers add-layer ../meta-openembedded/meta-multimedia/
-bitbake-layers add-layer ../meta-openembedded/meta-networking/
-bitbake-layers add-layer ../meta-openembedded/meta-filesystems/	
-bitbake-layers add-layer ../meta-kodi/	
-bitbake-layers add-layer ../meta-meson/
-bitbake-layers add-layer ../meta-clang/
-bitbake-layers add-layer ../meta-python2/
-bitbake-layers add-layer ../meta-browser/meta-chromium/
+bitbake-layers add-layer ../meta-openembedded/meta-oe /
+bitbake-layers add-layer ../meta-openembedded/meta-python /
+bitbake-layers add-layer ../meta-openembedded/meta-multimedia /
+bitbake-layers add-layer ../meta-openembedded/meta-networking /
+bitbake-layers add-layer ../meta-openembedded/meta-filesystems /	
+bitbake-layers add-layer ../meta-openembedded/meta-virtualization /	
+bitbake-layers add-layer ../meta-kodi /	
+bitbake-layers add-layer ../meta-meson /
+bitbake-layers add-layer ../meta-clang /
+bitbake-layers add-layer ../meta-python2 /
+bitbake-layers add-layer ../meta-browser/meta-chromium /
 # bitbake-layers show-layers
 
 # bitbake-layers add-layer ../meta-raspberrypi
@@ -44,7 +45,7 @@ sed -i '$a\PACKAGECONFIG_append_pn-gstreamer1.0-plugins-good = "vpx wavpack libv
 sed -i '$a\LICENSE_FLAGS_WHITELIST += " commercial_mpg123 commercial commercial_libav commercial_x264 commercial"'  conf/local.conf
 
 sed -i '$a\INHERIT += "rm_work"'  conf/local.conf
-sed -i '$a\IMAGE_INSTALL_append += " gstreamer1.0-plugins-good chromium-x11 ffmpeg  x11vnc vlc mpv kodi"'  conf/local.conf
+sed -i '$a\IMAGE_INSTALL_append += " gstreamer1.0-plugins-good chromium-x11 ffmpeg  x11vnc vlc mpv kodi docker cgroup-lite docker-contrib"'  conf/local.conf
 
 cat conf/local.conf
 cat conf/bblayers.conf
