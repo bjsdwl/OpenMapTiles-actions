@@ -3,6 +3,7 @@ git clone --depth 1 git://git.yoctoproject.org/poky -b hardknott poky
 git clone https://github.com/superna9999/meta-meson.git meta-meson -b hardknott
 git clone  git://git.openembedded.org/meta-openembedded -b hardknott
 git clone git://git.yoctoproject.org/meta-virtualization -b hardknott
+git clone git://git.yoctoproject.org/meta-security -b hardknott
 git  clone git://github.com/kraj/meta-clang -b hardknott 
 git clone git://git.openembedded.org/meta-python2 -b hardknott 
 git clone https://github.com/OSSystems/meta-browser.git -b master
@@ -20,7 +21,8 @@ bitbake-layers add-layer ../meta-openembedded/meta-python/
 bitbake-layers add-layer ../meta-openembedded/meta-multimedia/
 bitbake-layers add-layer ../meta-openembedded/meta-networking/
 bitbake-layers add-layer ../meta-openembedded/meta-filesystems/	
-bitbake-layers add-layer ../meta-virtualization/	
+bitbake-layers add-layer ../meta-virtualization/
+bitbake-layers add-layer ../meta-security/	
 bitbake-layers add-layer ../meta-kodi/	
 bitbake-layers add-layer ../meta-meson/
 bitbake-layers add-layer ../meta-clang/
