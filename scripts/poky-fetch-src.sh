@@ -47,7 +47,7 @@ sed -i '$a\LICENSE_FLAGS_WHITELIST += " commercial_mpg123 commercial commercial_
 sed -i '$a\DISTRO_FEATURES_append = " virtualization"'  conf/local.conf
 
 sed -i '$a\INHERIT += "rm_work"'  conf/local.conf
-sed -i '$a\IMAGE_INSTALL_append += " gstreamer1.0-plugins-good chromium-x11 ffmpeg  x11vnc vlc mpv kodi docker-ce"'  conf/local.conf
+sed -i '$a\IMAGE_INSTALL_append += " gstreamer1.0-plugins-good chromium-x11 ffmpeg  x11vnc vlc mpv kodi docker-ce docker-compose"'  conf/local.conf
 
 cat conf/local.conf
 cat conf/bblayers.conf
