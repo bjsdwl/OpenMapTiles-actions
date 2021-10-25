@@ -32,6 +32,7 @@ bitbake-layers add-layer ../meta-meson/
 bitbake-layers add-layer ../meta-clang/
 bitbake-layers add-layer ../meta-python2/
 bitbake-layers add-layer ../meta-browser/meta-chromium/
+bitbake-layers add-layer ../meta-openwrt/
 # bitbake-layers show-layers
 
 # bitbake-layers add-layer ../meta-raspberrypi
