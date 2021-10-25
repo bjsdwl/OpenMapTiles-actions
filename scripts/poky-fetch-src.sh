@@ -9,6 +9,7 @@ git clone git://github.com/kraj/meta-clang -b hardknott
 git clone git://git.openembedded.org/meta-python2 -b hardknott 
 git clone https://github.com/OSSystems/meta-browser.git -b master
 git clone https://github.com/EzEmbedded/meta-kodi.git -b hardknott
+git clone git://github.com/kraj/meta-openwrt.git -b hardknott
 # git clone -b gatesgarth git://git.openembedded.org/meta-openembedded
 # git clone -b gatesgarth git://git.yoctoproject.org/meta-raspberrypi
 # git clone -b gatesgarth https://github.com/meta-qt5/meta-qt5
@@ -73,5 +74,6 @@ cat conf/bblayers.conf
 # bitbake amlogic-image-headless-sd  --runonly=fetch
 # buildhistory-collect-srcrevs -a > collect-srcrevs.txt
 # bitbake amlogic-image-headless-sd -c populate_sdk_ext --runonly=fetch
-bitbake amlogic-image-sato -c populate_sdk_ext --runonly=fetch
-buildhistory-collect-srcrevs -a > collect-srcrevs.txt
+bitbake openwrt-image-full    #openwrt-image-base/openwrt-image-full
+# bitbake amlogic-image-sato -c populate_sdk_ext --runonly=fetch
+# buildhistory-collect-srcrevs -a > collect-srcrevs.txt
