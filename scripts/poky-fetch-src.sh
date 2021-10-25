@@ -54,7 +54,7 @@ sed -i '$a\DISTRO_FEATURES_append = " virtualization systemd pam"'  conf/local.c
 sed -i '$a\INHERIT += "rm_work"'  conf/local.conf
 # podman---podman podman-compose crun cgroup-lite ca-certificates python3-setuptools python3-pyyaml python3-json
 # docker-ce
-sed -i '$a\IMAGE_INSTALL_append += " gstreamer1.0-plugins-good chromium-x11 ffmpeg  x11vnc vlc mpv kodi docker-ce cockpit"'  conf/local.conf
+sed -i '$a\IMAGE_INSTALL_append += " gstreamer1.0-plugins-good chromium-x11 ffmpeg  x11vnc vlc mpv kodi podman podman-compose crun cgroup-lite ca-certificates python3-setuptools python3-pyyaml python3-json cockpit"'  conf/local.conf
 
 cat conf/local.conf
 cat conf/bblayers.conf
