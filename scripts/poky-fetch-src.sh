@@ -49,10 +49,12 @@ sed -i '$a\PACKAGECONFIG_append_pn-chromium = " proprietary-codecs"'  conf/local
 sed -i '$a\PACKAGECONFIG_append_pn-chromium = " use-vaapi"'  conf/local.conf
 sed -i '$a\PACKAGECONFIG_append_pn-gstreamer1.0-plugins-good = "vpx wavpack libv4l2"'  conf/local.conf
 sed -i '$a\LICENSE_FLAGS_WHITELIST += " commercial_mpg123 commercial commercial_libav commercial_x264 commercial"'  conf/local.conf
-sed -i '$a\DISTRO_FEATURES_append = " virtualization systemd pam"'  conf/local.conf # cockpit---pam
+sed -i '$a\DISTRO_FEATURES_append = " virtualization systemd pam"'  conf/local.conf # cockpit---pam  podman---virtualization podman---systemd
 
 sed -i '$a\INHERIT += "rm_work"'  conf/local.conf
-sed -i '$a\IMAGE_INSTALL_append += " gstreamer1.0-plugins-good chromium-x11 ffmpeg  x11vnc vlc mpv kodi podman podman-compose crun cgroup-lite ca-certificates python3-setuptools python3-pyyaml python3-json cockpit"'  conf/local.conf
+# podman---podman podman-compose crun cgroup-lite ca-certificates python3-setuptools python3-pyyaml python3-json
+# docker-ce
+sed -i '$a\IMAGE_INSTALL_append += " gstreamer1.0-plugins-good chromium-x11 ffmpeg  x11vnc vlc mpv kodi docker-ce cockpit"'  conf/local.conf
 
 cat conf/local.conf
 cat conf/bblayers.conf
