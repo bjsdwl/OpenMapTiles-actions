@@ -39,8 +39,7 @@ bitbake-layers add-layer ../meta-browser/meta-chromium/
 # modify local.conf to build raspberrypi3 64-bit system
 sed -i '/^MACHINE/s/= .*$/= "khadas-vim3l-sdboot"/g' conf/local.conf
 sed -i '/^#SDKMA/s/#\(.*\)=.*$/\1= "x86_64"/g'  conf/local.conf
-sed -i '$a\BB_GENERATE_MIRROR_TARBALLS = "1"'  conf/local.conf
-sed -i '$a\DISTRO_FEATURES_append = "pam"'  conf/local.conf    # cockpit
+sed -i '$a\BB_GENERATE_MIRROR_TARBALLS = "1"'  conf/local.conf 
 sed -i '$a\INHERIT += "buildhistory"'  conf/local.conf
 sed -i '$a\BUILDHISTORY_COMMIT = "1"'  conf/local.conf
 # sed -i '$a\BB_NUMBER_THREADS = "2"'  conf/local.conf
@@ -50,7 +49,7 @@ sed -i '$a\PACKAGECONFIG_append_pn-chromium = " proprietary-codecs"'  conf/local
 sed -i '$a\PACKAGECONFIG_append_pn-chromium = " use-vaapi"'  conf/local.conf
 sed -i '$a\PACKAGECONFIG_append_pn-gstreamer1.0-plugins-good = "vpx wavpack libv4l2"'  conf/local.conf
 sed -i '$a\LICENSE_FLAGS_WHITELIST += " commercial_mpg123 commercial commercial_libav commercial_x264 commercial"'  conf/local.conf
-sed -i '$a\DISTRO_FEATURES_append = " virtualization systemd"'  conf/local.conf
+sed -i '$a\DISTRO_FEATURES_append = " virtualization systemd pam"'  conf/local.conf # cockpit---pam
 
 sed -i '$a\INHERIT += "rm_work"'  conf/local.conf
 sed -i '$a\IMAGE_INSTALL_append += " gstreamer1.0-plugins-good chromium-x11 ffmpeg  x11vnc vlc mpv kodi podman podman-compose crun cgroup-lite ca-certificates python3-setuptools python3-pyyaml python3-json cockpit"'  conf/local.conf
