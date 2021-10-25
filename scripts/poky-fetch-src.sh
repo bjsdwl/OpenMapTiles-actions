@@ -44,7 +44,7 @@ sed -i '/^#SDKMA/s/#\(.*\)=.*$/\1= "x86_64"/g'  conf/local.conf
 sed -i '$a\BB_GENERATE_MIRROR_TARBALLS = "1"'  conf/local.conf 
 sed -i '$a\INHERIT += "buildhistory"'  conf/local.conf
 sed -i '$a\BUILDHISTORY_COMMIT = "1"'  conf/local.conf
-# sed -i '$a\BB_NUMBER_THREADS = "2"'  conf/local.conf
+# sed -i '$a\BB_NUMBER_THREADS = "2"'  conf/local.conf 
 # sed -i '$a\PARALLEL_MAKE = "-j 2"'  conf/local.conf
 sed -i '$a\PACKAGECONFIG_append_pn-chromium = " component-build"'  conf/local.conf
 sed -i '$a\PACKAGECONFIG_append_pn-chromium = " proprietary-codecs"'  conf/local.conf
