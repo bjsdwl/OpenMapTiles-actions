@@ -53,10 +53,10 @@ sed -i '$a\PACKAGECONFIG_append_pn-gstreamer1.0-plugins-good = "vpx wavpack libv
 sed -i '$a\LICENSE_FLAGS_WHITELIST += " commercial_mpg123 commercial commercial_libav commercial_x264 commercial"'  conf/local.conf
 sed -i '$a\DISTRO_FEATURES_append = " virtualization systemd pam procd "'  conf/local.conf # cockpit---pam  podman---virtualization podman---systemd
 
-sed -i '$a\INHERIT += "rm_work"'  conf/local.conf
+# sed -i '$a\INHERIT += "rm_work"'  conf/local.conf
 # podman---podman podman-compose crun cgroup-lite ca-certificates python3-setuptools python3-pyyaml python3-json
 # docker-ce
-# sed -i '$a\IMAGE_INSTALL_append += " gstreamer1.0-plugins-good chromium-x11 ffmpeg  x11vnc vlc mpv kodi podman podman-compose crun cgroup-lite ca-certificates python3-setuptools python3-pyyaml python3-json cockpit"'  conf/local.conf
+sed -i '$a\IMAGE_INSTALL_append += " gstreamer1.0-plugins-good chromium-x11 ffmpeg  x11vnc vlc mpv kodi podman podman-compose crun cgroup-lite ca-certificates python3-setuptools python3-pyyaml python3-json cockpit"'  conf/local.conf
 
 cat conf/local.conf
 cat conf/bblayers.conf
@@ -70,10 +70,10 @@ cat conf/bblayers.conf
 #bitbake qtbase
 #bitbake core-image-base -c populate_sdk
 # buildhistory-collect-srcrevs -a
-bitbake amlogic-image-headless-initrd --runonly=fetch # amlogic-image-headless-initrd/amlogic-image-headless-sd/amlogic-image-sato
+# bitbake amlogic-image-headless-initrd --runonly=fetch # amlogic-image-headless-initrd/amlogic-image-headless-sd/amlogic-image-sato
 # bitbake chromium --runonly=fetch
 # bitbake amlogic-image-headless-sd  --runonly=fetch 
 # bitbake amlogic-image-headless-sd -c populate_sdk_ext --runonly=fetch
 # bitbake openwrt-image-full  -c populate_sdk_ext --runonly=fetch #openwrt-image-base/openwrt-image-full
-# bitbake amlogic-image-sato -c populate_sdk_ext --runonly=fetch
+bitbake amlogic-image-sato -c populate_sdk_ext --runonly=fetch
 buildhistory-collect-srcrevs -a > collect-srcrevs.txt
