@@ -5,11 +5,11 @@ git clone git://git.openembedded.org/meta-openembedded -b hardknott
 git clone git://git.yoctoproject.org/meta-virtualization -b hardknott
 # git clone git://git.openembedded.org/meta-perl -b hardknott
 git clone git://git.yoctoproject.org/meta-security -b hardknott
-git clone git://github.com/kraj/meta-clang -b hardknott 
-git clone git://git.openembedded.org/meta-python2 -b hardknott 
-git clone https://github.com/OSSystems/meta-browser.git -b master
-git clone https://github.com/EzEmbedded/meta-kodi.git -b hardknott
-git clone git://github.com/kraj/meta-openwrt.git -b hardknott
+# git clone git://github.com/kraj/meta-clang -b hardknott 
+# git clone git://git.openembedded.org/meta-python2 -b hardknott 
+# git clone https://github.com/OSSystems/meta-browser.git -b master
+# git clone https://github.com/EzEmbedded/meta-kodi.git -b hardknott
+# git clone git://github.com/kraj/meta-openwrt.git -b hardknott
 # git clone -b gatesgarth git://git.openembedded.org/meta-openembedded
 # git clone -b gatesgarth git://git.yoctoproject.org/meta-raspberrypi
 # git clone -b gatesgarth https://github.com/meta-qt5/meta-qt5
@@ -70,5 +70,5 @@ cat conf/bblayers.conf
 # bitbake amlogic-image-headless-sd  --runonly=fetch 
 # bitbake amlogic-image-headless-sd -c populate_sdk_ext --runonly=fetch
 # bitbake openwrt-image-full  -c populate_sdk_ext --runonly=fetch #openwrt-image-base/openwrt-image-full
-bitbake amlogic-image-headless-sd -c  --runonly=fetch
+bitbake aamlogic-image-headless-initrd   --runonly=fetch
 buildhistory-collect-srcrevs -a > collect-srcrevs.txt
