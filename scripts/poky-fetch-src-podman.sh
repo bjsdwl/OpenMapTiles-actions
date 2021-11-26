@@ -1,11 +1,11 @@
 #!/bin/bash
-git clone --depth 1 git://git.yoctoproject.org/poky -b thud  poky
-git clone https://github.com/superna9999/meta-meson.git meta-meson -b thud 
-git clone git://git.openembedded.org/meta-openembedded -b thud 
-git clone git://git.yoctoproject.org/meta-virtualization -b thud 
+git clone --depth 1 git://git.yoctoproject.org/poky -b dunfell  poky
+git clone https://github.com/superna9999/meta-meson.git meta-meson -b dunfell 
+git clone git://git.openembedded.org/meta-openembedded -b dunfell 
+git clone git://git.yoctoproject.org/meta-virtualization -b dunfell 
 # git clone git://git.openembedded.org/meta-perl -b hardknott
-git clone git://git.yoctoproject.org/meta-security -b thud 
-git clone git://github.com/kraj/meta-clang -b thud  
+git clone git://git.yoctoproject.org/meta-security -b dunfell 
+git clone git://github.com/kraj/meta-clang -b dunfell  
 # git clone git://git.openembedded.org/meta-python2 -b thud  
 # git clone https://github.com/OSSystems/meta-browser.git -b thud 
 # git clone https://github.com/EzEmbedded/meta-kodi.git -b thud 
@@ -39,7 +39,7 @@ bitbake-layers add-layer ../meta-meson/
 # bitbake-layers add-layer ../meta-qt5
 
 # modify local.conf to build raspberrypi3 64-bit system
-sed -i '/^MACHINE/s/= .*$/= "khadas-vim3l-sdboot"/g' conf/local.conf
+sed -i '/^MACHINE/s/= .*$/= "khadas-vim3l"/g' conf/local.conf
 sed -i '/^#SDKMA/s/#\(.*\)=.*$/\1= "x86_64"/g'  conf/local.conf
 sed -i '$a\BB_GENERATE_MIRROR_TARBALLS = "1"'  conf/local.conf 
 sed -i '$a\INHERIT += "buildhistory"'  conf/local.conf
