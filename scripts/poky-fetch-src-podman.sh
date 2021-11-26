@@ -46,9 +46,8 @@ sed -i '$a\INHERIT += "buildhistory"'  conf/local.conf
 sed -i '$a\BUILDHISTORY_COMMIT = "1"'  conf/local.conf
 # sed -i '$a\BB_NUMBER_THREADS = "2"'  conf/local.conf 
 # sed -i '$a\PARALLEL_MAKE = "-j 2"'  conf/local.conf
-sed -i '$a\PACKAGECONFIG_append_pn-chromium = " component-build"'  conf/local.conf
-sed -i '$a\PACKAGECONFIG_append_pn-chromium = " proprietary-codecs"'  conf/local.conf
-sed -i '$a\PACKAGECONFIG_append_pn-chromium = " use-vaapi"'  conf/local.conf
+# sed -i '$a\PACKAGECONFIG_append_pn-chromium = " component-build proprietary-codecs use-vaapi"'  conf/local.conf
+
 sed -i '$a\PACKAGECONFIG_append_pn-gstreamer1.0-plugins-good = "vpx wavpack libv4l2"'  conf/local.conf
 sed -i '$a\LICENSE_FLAGS_WHITELIST += " commercial_mpg123 commercial commercial_libav commercial_x264 commercial"'  conf/local.conf
 sed -i '$a\DISTRO_FEATURES_append = " virtualization systemd pam procd "'  conf/local.conf # cockpit---pam  podman---virtualization podman---systemd
