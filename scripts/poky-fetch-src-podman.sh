@@ -54,8 +54,8 @@ sed -i '$a\DISTRO_FEATURES_append = " virtualization systemd pam procd "'  conf/
 
 # sed -i '$a\INHERIT += "rm_work"'  conf/local.conf
 # podman---podman podman-compose crun cgroup-lite ca-certificates python3-setuptools python3-pyyaml python3-json
-# docker-ce cockpit 
-sed -i '$a\IMAGE_INSTALL_append += " podman podman-compose crun cgroup-lite rng-tools procps ca-certificates python3-setuptools python3-pyyaml python3-json"'  conf/local.conf
+# docker-ce cockpit podman podman-compose crun cgroup-lite rng-tools procps ca-certificates python3-setuptools python3-pyyaml python3-json
+sed -i '$a\IMAGE_INSTALL_append += " docker-ce"'  conf/local.conf
 
 cat conf/local.conf
 cat conf/bblayers.conf
