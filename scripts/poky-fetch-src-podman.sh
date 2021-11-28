@@ -1,11 +1,11 @@
 #!/bin/bash
-git clone --depth 1 git://git.yoctoproject.org/poky -b dunfell  poky
-git clone https://github.com/superna9999/meta-meson.git meta-meson -b dunfell 
-git clone git://git.openembedded.org/meta-openembedded -b dunfell 
-git clone git://git.yoctoproject.org/meta-virtualization -b dunfell 
+git clone --depth 1 git://git.yoctoproject.org/poky -b hardknott  poky
+git clone https://github.com/superna9999/meta-meson.git meta-meson -b hardknott 
+git clone git://git.openembedded.org/meta-openembedded -b hardknott 
+git clone git://git.yoctoproject.org/meta-virtualization -b hardknott 
 # git clone git://git.openembedded.org/meta-perl -b hardknott
-git clone git://git.yoctoproject.org/meta-security -b dunfell 
-git clone git://github.com/kraj/meta-clang -b dunfell  
+git clone git://git.yoctoproject.org/meta-security -b hardknott 
+git clone git://github.com/kraj/meta-clang -b hardknott  
 # git clone git://git.openembedded.org/meta-python2 -b thud  
 # git clone https://github.com/OSSystems/meta-browser.git -b thud 
 # git clone https://github.com/EzEmbedded/meta-kodi.git -b thud 
@@ -50,7 +50,8 @@ sed -i '$a\BUILDHISTORY_COMMIT = "1"'  conf/local.conf
 
 # sed -i '$a\PACKAGECONFIG_append_pn-gstreamer1.0-plugins-good = "vpx wavpack libv4l2"'  conf/local.conf
 sed -i '$a\LICENSE_FLAGS_WHITELIST += " commercial_mpg123 commercial commercial_libav commercial_x264 commercial"'  conf/local.conf
-sed -i '$a\DISTRO_FEATURES_append = " virtualization systemd pam procd "'  conf/local.conf # cockpit---pam  podman---virtualization podman---systemd
+# systemd pam procd 
+sed -i '$a\DISTRO_FEATURES_append = " virtualization"'  conf/local.conf # cockpit---pam  podman---virtualization podman---systemd
 
 # sed -i '$a\INHERIT += "rm_work"'  conf/local.conf
 # podman---podman podman-compose crun cgroup-lite ca-certificates python3-setuptools python3-pyyaml python3-json
