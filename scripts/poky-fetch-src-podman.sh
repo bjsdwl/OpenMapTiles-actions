@@ -53,7 +53,7 @@ sed -i '$a\LICENSE_FLAGS_WHITELIST += " commercial_mpg123 commercial commercial_
 # systemd pam procd 
 sed -i '$a\DISTRO_FEATURES_append = " virtualization"'  conf/local.conf # cockpit---pam  podman---virtualization podman---systemd
 
-# sed -i '$a\INHERIT += "rm_work"'  conf/local.conf
+sed -i '$a\INHERIT += "rm_work"'  conf/local.conf
 # podman---podman podman-compose crun cgroup-lite ca-certificates python3-setuptools python3-pyyaml python3-json
 # docker-ce cockpit podman podman-compose crun cgroup-lite rng-tools procps ca-certificates python3-setuptools python3-pyyaml python3-json
 sed -i '$a\IMAGE_INSTALL_append += " bash docker-ce docker-ce-contrib python3 python3-docker-compose"'  conf/local.conf
