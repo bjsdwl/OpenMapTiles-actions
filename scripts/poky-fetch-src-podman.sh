@@ -51,13 +51,13 @@ sed -i '$a\BUILDHISTORY_COMMIT = "1"'  conf/local.conf
 # sed -i '$a\PACKAGECONFIG_append_pn-gstreamer1.0-plugins-good = "vpx wavpack libv4l2"'  conf/local.conf
 sed -i '$a\LICENSE_FLAGS_WHITELIST += " commercial_mpg123 commercial commercial_libav commercial_x264 commercial"'  conf/local.conf
 # systemd pam procd 
-sed -i '$a\DISTRO_FEATURES_append = " virtualization crun"'  conf/local.conf # cockpit---pam  podman---virtualization podman---systemd
-
+sed -i '$a\DISTRO_FEATURES_append = " virtualization systemd"'  conf/local.conf # cockpit---pam  podman---virtualization podman---systemd
+sed -i '$a\PACKAGE_CLASSES ?= "package_ipk"'  conf/local.conf
 sed -i '$a\INHERIT += "rm_work"'  conf/local.conf
 # podman---podman podman-compose crun cgroup-lite ca-certificates python3-setuptools python3-pyyaml python3-json
 # docker-ce cockpit podman podman-compose crun cgroup-lite rng-tools procps ca-certificates python3-setuptools python3-pyyaml python3-json
 # bash docker-ce docker-ce-contrib python3 python3-docker-compose
-sed -i '$a\IMAGE_INSTALL_append += " bash podman podman-compose crun cgroup-lite ca-certificates python3-setuptools python3-pyyaml python3-json"'  conf/local.conf
+sed -i '$a\IMAGE_INSTALL_append += " bash docker-ce docker-ce-contrib python3 python3-docker-compose"'  conf/local.conf
 
 cat conf/local.conf
 cat conf/bblayers.conf
