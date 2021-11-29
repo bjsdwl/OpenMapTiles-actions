@@ -39,7 +39,7 @@ bitbake-layers add-layer ../meta-meson/
 # bitbake-layers add-layer ../meta-qt5
 
 # modify local.conf to build raspberrypi3 64-bit system
-sed -i '/^MACHINE/s/= .*$/= "khadas-vim3l"/g' conf/local.conf
+sed -i '/^MACHINE/s/= .*$/= "hardkernel-odroidc4"/g' conf/local.conf
 sed -i '/^#SDKMA/s/#\(.*\)=.*$/\1= "x86_64"/g'  conf/local.conf
 sed -i '$a\BB_GENERATE_MIRROR_TARBALLS = "1"'  conf/local.conf 
 sed -i '$a\INHERIT += "buildhistory"'  conf/local.conf
