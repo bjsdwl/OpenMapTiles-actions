@@ -39,7 +39,7 @@ bitbake-layers add-layer ../meta-meson/
 # bitbake-layers add-layer ../meta-raspberrypi
 # bitbake-layers add-layer ../meta-qt5
 
-sed -i '$a\DL_DIR ?= "/home/yocto-crops/downloads"'  conf/local.conf
+# sed -i '$a\DL_DIR ?= "/home/yocto-crops/downloads"'  conf/local.conf
 
 # modify local.conf to build raspberrypi3 64-bit system
 sed -i '/^MACHINE/s/= .*$/= "seirobotics-sei610"/g' conf/local.conf
