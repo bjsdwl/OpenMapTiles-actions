@@ -7,7 +7,7 @@ git clone git://git.yoctoproject.org/meta-virtualization -b hardknott
 # git clone git://github.com/kraj/meta-clang -b hardknott  
 git clone git://git.openembedded.org/meta-python2 -b hardknott  
 # git clone https://github.com/OSSystems/meta-browser.git -b thud 
-git clone https://github.com.cnpmjs.org/koenkooi/meta-kodi.git -b hardknott 
+git clone https://github.com/EzEmbedded/meta-kodi.git -b hardknott 
 # git clone git://github.com/kraj/meta-openwrt.git -b thud 
 # git clone -b gatesgarth git://git.openembedded.org/meta-openembedded
 # git clone -b gatesgarth git://git.yoctoproject.org/meta-raspberrypi
@@ -47,8 +47,8 @@ sed -i '/^#SDKMA/s/#\(.*\)=.*$/\1= "x86_64"/g'  conf/local.conf
 sed -i '$a\BB_GENERATE_MIRROR_TARBALLS = "1"'  conf/local.conf 
 sed -i '$a\INHERIT += "buildhistory"'  conf/local.conf
 sed -i '$a\BUILDHISTORY_COMMIT = "1"'  conf/local.conf
-sed -i '$a\BB_NUMBER_THREADS = "8"'  conf/local.conf 
-sed -i '$a\PARALLEL_MAKE = "-j 8"'  conf/local.conf
+# sed -i '$a\BB_NUMBER_THREADS = "8"'  conf/local.conf 
+# sed -i '$a\PARALLEL_MAKE = "-j 8"'  conf/local.conf
 # sed -i '$a\PACKAGECONFIG_append_pn-chromium = " component-build proprietary-codecs use-vaapi"'  conf/local.conf
 
 # sed -i '$a\PACKAGECONFIG_append_pn-gstreamer1.0-plugins-good = "vpx wavpack libv4l2"'  conf/local.conf
