@@ -58,13 +58,13 @@ sed -i '$a\PACKAGECONFIG_append_pn-gstreamer1.0-plugins-good = "vpx wavpack libv
 sed -i '$a\LICENSE_FLAGS_WHITELIST += " commercial_mpg123 commercial commercial_libav commercial_x264 commercial"'  conf/local.conf
 
 # systemd pam procd 
-sed -i '$a\DISTRO_FEATURES_append = " systemd x11 procd"'  conf/local.conf # cockpit---pam  podman---virtualization podman---systemd
+sed -i '$a\DISTRO_FEATURES_append = " systemd x11"'  conf/local.conf # cockpit---pam  podman---virtualization podman---systemd
 # sed -i '$a\PACKAGE_CLASSES ?= "package_ipk"'  conf/local.conf
 sed -i '$a\INHERIT += "rm_work"'  conf/local.conf
 
 # podman: cockpit podman podman-compose crun cgroup-lite rng-tools procps ca-certificates python3-setuptools python3-pyyaml python3-json
 # docker-ce: cockpit docker-ce docker-ce-contrib python3 python3-docker-compose
-sed -i '$a\IMAGE_INSTALL_append += " kodi"' 
+sed -i '$a\IMAGE_INSTALL_append += " "' 
 # cockpit docker-ce docker-ce-contrib python3 python3-docker-compose python3-setuptools python3-pyyaml python3-json gstreamer1.0-plugins-good  ffmpeg x11vnc vlc mpv chromium-x11"'  conf/local.conf
 
 cat conf/local.conf
