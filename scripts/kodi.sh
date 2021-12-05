@@ -60,7 +60,7 @@ sed -i '$a\LICENSE_FLAGS_WHITELIST += " commercial_mpg123 commercial commercial_
 # systemd pam procd 
 sed -i '$a\DISTRO_FEATURES_append = " virtualization systemd pam procd"'  conf/local.conf # cockpit---pam  podman---virtualization podman---systemd
 sed -i '$a\PACKAGE_CLASSES ?= "package_ipk"'  conf/local.conf
-# sed -i '$a\INHERIT += "rm_work"'  conf/local.conf
+sed -i '$a\INHERIT += "rm_work"'  conf/local.conf
 
 # podman: cockpit podman podman-compose crun cgroup-lite rng-tools procps ca-certificates python3-setuptools python3-pyyaml python3-json
 # docker-ce: cockpit docker-ce docker-ce-contrib python3 python3-docker-compose
