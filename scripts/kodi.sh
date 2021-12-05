@@ -27,8 +27,8 @@ bitbake-layers add-layer ../meta-openembedded/meta-multimedia/
 bitbake-layers add-layer ../meta-openembedded/meta-networking/
 bitbake-layers add-layer ../meta-openembedded/meta-filesystems/	
 bitbake-layers add-layer ../meta-openembedded/meta-webserver/	 # cockpit 
-bitbake-layers add-layer ../meta-virtualization/
-bitbake-layers add-layer ../meta-security/	
+# bitbake-layers add-layer ../meta-virtualization/
+# bitbake-layers add-layer ../meta-security/	
 bitbake-layers add-layer ../meta-kodi/	
 bitbake-layers add-layer ../meta-meson/
 bitbake-layers add-layer ../meta-clang/
@@ -58,7 +58,7 @@ sed -i '$a\PACKAGECONFIG_append_pn-gstreamer1.0-plugins-good = "vpx wavpack libv
 sed -i '$a\LICENSE_FLAGS_WHITELIST += " commercial_mpg123 commercial commercial_libav commercial_x264 commercial"'  conf/local.conf
 
 # systemd pam procd 
-sed -i '$a\DISTRO_FEATURES_append = " virtualization systemd x11"'  conf/local.conf # cockpit---pam  podman---virtualization podman---systemd
+sed -i '$a\DISTRO_FEATURES_append = " systemd x11"'  conf/local.conf # cockpit---pam  podman---virtualization podman---systemd
 sed -i '$a\PACKAGE_CLASSES ?= "package_ipk"'  conf/local.conf
 sed -i '$a\INHERIT += "rm_work"'  conf/local.conf
 
