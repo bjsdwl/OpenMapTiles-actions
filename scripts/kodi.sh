@@ -64,7 +64,7 @@ sed -i '$a\INHERIT += "rm_work"'  conf/local.conf
 
 # podman: cockpit podman podman-compose crun cgroup-lite rng-tools procps ca-certificates python3-setuptools python3-pyyaml python3-json
 # docker-ce: cockpit docker-ce docker-ce-contrib python3 python3-docker-compose
-sed -i '$a\IMAGE_INSTALL_append += " kodi"' 
+sed -i '$a\IMAGE_INSTALL_append += " kodi cockpit docker-ce docker-ce-contrib python3 python3-docker-compose"' 
 # cockpit docker-ce docker-ce-contrib python3 python3-docker-compose python3-setuptools python3-pyyaml python3-json gstreamer1.0-plugins-good  ffmpeg x11vnc vlc mpv chromium-x11"'  conf/local.conf
 
 cat conf/local.conf
