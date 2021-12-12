@@ -69,6 +69,7 @@ sed -i '$a\IMAGE_INSTALL_append += " kodi cockpit docker-ce docker-ce-contrib py
 
 cat conf/local.conf
 cat conf/bblayers.conf
+#
 
 
 #sed -i '/SDKMACHINE/aTOOLCHAIN_TARGET_TASK_append = "libc-staticdev"' conf/local.conf
