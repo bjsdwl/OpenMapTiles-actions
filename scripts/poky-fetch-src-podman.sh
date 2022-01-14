@@ -6,13 +6,12 @@ git clone git://git.yoctoproject.org/meta-virtualization -b hardknott
 # git clone git://git.openembedded.org/meta-perl -b hardknott
 git clone git://git.yoctoproject.org/meta-security -b hardknott 
 git clone git://github.com/kraj/meta-clang -b hardknott  
-# git clone git://git.openembedded.org/meta-python2 -b hardknott  
-# git clone https://github.com/OSSystems/meta-browser.git -b master 
+git clone git://git.openembedded.org/meta-python2 -b hardknott  
+git clone https://github.com/OSSystems/meta-browser.git -b master 
+
 # git clone https://github.com/EzEmbedded/meta-kodi.git -b master-next 
 # git clone git://github.com/kraj/meta-openwrt.git -b thud 
-# git clone -b gatesgarth git://git.openembedded.org/meta-openembedded
-# git clone -b gatesgarth git://git.yoctoproject.org/meta-raspberrypi
-# git clone -b gatesgarth https://github.com/meta-qt5/meta-qt5
+
 pwd 
 ls -al
 source poky/oe-init-build-env # in build dir
