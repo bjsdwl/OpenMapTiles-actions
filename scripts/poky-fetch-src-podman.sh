@@ -29,7 +29,7 @@ bitbake-layers add-layer ../meta-meson/
 bitbake-layers add-layer ../meta-clang/
 bitbake-layers add-layer ../meta-python2/
 bitbake-layers add-layer ../meta-browser/meta-chromium/
-bitbake-layers add-layer ../meta-openwrt/    ############################
+# bitbake-layers add-layer ../meta-openwrt/    ############################
 
 # sed -i '$a\DL_DIR ?= "/home/yocto-crops/Zdownloads"'  conf/local.conf
 
