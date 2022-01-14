@@ -53,7 +53,7 @@ sed -i '$a\PACKAGE_CLASSES ?= "package_ipk"'  conf/local.conf
 
 # podman: cockpit podman podman-compose crun cgroup-lite rng-tools procps ca-certificates python3-setuptools python3-pyyaml python3-json
 # docker-ce: cockpit docker-ce docker-ce-contrib python3 python3-docker-compose
-sed -i '$a\IMAGE_INSTALL_append += " kodi openwrt gstreamer1.0-plugins-good ffmpeg chromium-x11 x11vnc vlc mpv cockpit podman podman-compose crun cgroup-lite rng-tools procps ca-certificates python3-setuptools python3-pyyaml python3-json"'  conf/local.conf
+sed -i '$a\IMAGE_INSTALL_append += " kodi openwrt gstreamer1.0-plugins-good ffmpeg chromium-x11 x11vnc vlc mpv cockpit podman podman-compose crun cgroup-lite rng-tools procps ca-certificates python3-setuptools python3-pyyaml python3-json docker-ce docker-ce-contrib python3 python3-docker-compose"'  conf/local.conf
 
 # cat /home/yocto-crops/Zdownloads/collect-srcrevs.txt >> conf/local.conf
 
