@@ -3,12 +3,10 @@ git clone --depth 1 git://git.yoctoproject.org/poky -b hardknott  poky
 git clone https://github.com.cnpmjs.org/superna9999/meta-meson.git -b hardknott 
 git clone git://git.openembedded.org/meta-openembedded -b hardknott 
 git clone git://git.yoctoproject.org/meta-virtualization -b hardknott 
-# git clone git://git.openembedded.org/meta-perl -b hardknott
 git clone git://git.yoctoproject.org/meta-security -b hardknott 
 git clone git://github.com/kraj/meta-clang -b hardknott  
 git clone git://git.openembedded.org/meta-python2 -b hardknott  
 git clone https://github.com/OSSystems/meta-browser.git -b master 
-
 git clone https://github.com/EzEmbedded/meta-kodi.git -b master-next 
 git clone git://github.com/kraj/meta-openwrt.git -b thud 
 
@@ -26,12 +24,12 @@ bitbake-layers add-layer ../meta-openembedded/meta-filesystems/
 bitbake-layers add-layer ../meta-openembedded/meta-webserver/	 # cockpit 
 bitbake-layers add-layer ../meta-virtualization/
 bitbake-layers add-layer ../meta-security/	
-bitbake-layers add-layer ../meta-kodi/	
+bitbake-layers add-layer ../meta-kodi/	  ############################
 bitbake-layers add-layer ../meta-meson/
 bitbake-layers add-layer ../meta-clang/
 bitbake-layers add-layer ../meta-python2/
 bitbake-layers add-layer ../meta-browser/meta-chromium/
-bitbake-layers add-layer ../meta-openwrt/
+bitbake-layers add-layer ../meta-openwrt/    ############################
 # bitbake-layers show-layers
 
 # bitbake-layers add-layer ../meta-raspberrypi
@@ -39,12 +37,13 @@ bitbake-layers add-layer ../meta-openwrt/
 
 # sed -i '$a\DL_DIR ?= "/home/yocto-crops/Zdownloads"'  conf/local.conf
 
-# modify local.conf to build raspberrypi3 64-bit system
+# modify local.conf 
 sed -i '/^MACHINE/s/= .*$/= "seirobotics-sei610"/g' conf/local.conf
 sed -i '/^#SDKMA/s/#\(.*\)=.*$/\1= "x86_64"/g'  conf/local.conf
 sed -i '$a\BB_GENERATE_MIRROR_TARBALLS = "1"'  conf/local.conf 
 sed -i '$a\INHERIT += "buildhistory"'  conf/local.conf
 sed -i '$a\BUILDHISTORY_COMMIT = "1"'  conf/local.conf
+
 # sed -i '$a\BB_NUMBER_THREADS = "16"'  conf/local.conf 
 # sed -i '$a\PARALLEL_MAKE = "-j 16"'  conf/local.conf
 
