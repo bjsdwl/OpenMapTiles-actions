@@ -30,6 +30,7 @@ jobs:
           tar  cvzf - downloads/ | split -b 2040m - poky-src.tar.gz.
           mv poky-src.tar.gz.* /UpReleaseArtifact
           mv collect-srcrevs.txt /UpReleaseArtifact
+          ls -al /UpReleaseArtifact
       - name: clear src release    #v1.0.0 is src
         uses: dev-drprasad/delete-tag-and-release@v0.2.0
         with:
