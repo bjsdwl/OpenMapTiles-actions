@@ -30,10 +30,6 @@ bitbake-layers add-layer ../meta-clang/
 bitbake-layers add-layer ../meta-python2/
 bitbake-layers add-layer ../meta-browser/meta-chromium/
 bitbake-layers add-layer ../meta-openwrt/    ############################
-# bitbake-layers show-layers
-
-# bitbake-layers add-layer ../meta-raspberrypi
-# bitbake-layers add-layer ../meta-qt5
 
 # sed -i '$a\DL_DIR ?= "/home/yocto-crops/Zdownloads"'  conf/local.conf
 
@@ -63,7 +59,6 @@ sed -i '$a\IMAGE_INSTALL_append += " kodi openwrt gstreamer1.0-plugins-good ffmp
 
 cat conf/local.conf
 cat conf/bblayers.conf
-
 
 #sed -i '/SDKMACHINE/aTOOLCHAIN_TARGET_TASK_append = "libc-staticdev"' conf/local.conf
 #sed -i '/qt5-ptest/aPACKAGECONFIG_remove = "tslib"' ../meta-qt5/recipes-qt/qt5/qtbase_git.bb
