@@ -14,6 +14,10 @@ A：编译kodi时，
     	add-apt-repository -y ppa:openjdk-r/ppa
     	apt-get update
     	apt-get -y install default-jre
+    4、poky -b master-next;
+       kodi -b master-next; 
+       meta-kodi/recipes-support/fstrcmp/fstrcmp_0.7.bb line18 add：
+           export LIBTOOL = "${HOST_SYS}-libtool" 
 
 B：手动下载软件包方法：
 	1、下载软件包。
