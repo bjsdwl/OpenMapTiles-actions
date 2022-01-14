@@ -37,7 +37,7 @@ bitbake-layers add-layer ../meta-browser/meta-chromium/
 # bitbake-layers add-layer ../meta-raspberrypi
 # bitbake-layers add-layer ../meta-qt5
 
-sed -i '$a\DL_DIR ?= "/home/yocto-crops/Zdownloads"'  conf/local.conf
+# sed -i '$a\DL_DIR ?= "/home/yocto-crops/Zdownloads"'  conf/local.conf
 
 # modify local.conf to build raspberrypi3 64-bit system
 sed -i '/^MACHINE/s/= .*$/= "seirobotics-sei610"/g' conf/local.conf
@@ -45,8 +45,8 @@ sed -i '/^#SDKMA/s/#\(.*\)=.*$/\1= "x86_64"/g'  conf/local.conf
 sed -i '$a\BB_GENERATE_MIRROR_TARBALLS = "1"'  conf/local.conf 
 sed -i '$a\INHERIT += "buildhistory"'  conf/local.conf
 sed -i '$a\BUILDHISTORY_COMMIT = "1"'  conf/local.conf
-sed -i '$a\BB_NUMBER_THREADS = "16"'  conf/local.conf 
-sed -i '$a\PARALLEL_MAKE = "-j 16"'  conf/local.conf
+# sed -i '$a\BB_NUMBER_THREADS = "16"'  conf/local.conf 
+# sed -i '$a\PARALLEL_MAKE = "-j 16"'  conf/local.conf
 
 sed -i '$a\PACKAGECONFIG_append_pn-chromium = " component-build proprietary-codecs use-vaapi"'  conf/local.conf
 sed -i '$a\PACKAGECONFIG_append_pn-gstreamer1.0-plugins-good = "vpx wavpack libv4l2"'  conf/local.conf
