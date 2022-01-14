@@ -8,7 +8,7 @@ git clone git://github.com/kraj/meta-clang -b hardknott
 git clone git://git.openembedded.org/meta-python2 -b hardknott  
 git clone https://github.com/OSSystems/meta-browser.git -b master 
 git clone https://github.com/EzEmbedded/meta-kodi.git -b master-next 
-git clone git://github.com/kraj/meta-openwrt.git -b thud 
+git clone git://github.com/kraj/meta-openwrt.git -b hardknott 
 
 pwd 
 ls -al
