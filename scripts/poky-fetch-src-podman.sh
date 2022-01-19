@@ -2,7 +2,7 @@
 git clone --depth 1 git://git.yoctoproject.org/poky -b hardknott  poky
 git clone https://github.com.cnpmjs.org/superna9999/meta-meson.git -b hardknott 
 git clone git://git.openembedded.org/meta-openembedded -b hardknott 
-git clone git://git.yoctoproject.org/meta-virtualization -b hardknott 
+git clone https://github.com/EzEmbedded/meta-virtualization.git -b hardknott 
 git clone git://git.yoctoproject.org/meta-security -b hardknott 
 git clone git://github.com/kraj/meta-clang -b hardknott  
 git clone git://git.openembedded.org/meta-python2 -b hardknott  
