@@ -9,6 +9,7 @@ git clone git://git.openembedded.org/meta-python2 -b hardknott
 git clone https://github.com/OSSystems/meta-browser.git -b master 
 git clone https://github.com/koenkooi/meta-kodi.git -b master-next 
 git clone git://github.com/kraj/meta-openwrt.git -b hardknott 
+cp -r mypatch/ meta-virtualization/
 pwd 
 ls -l
 ls -l mypatch/
@@ -19,8 +20,8 @@ pwd
 echo "dir dir dir:"
 ls -l
 ls -l ../mypatch/curn_git.patch
-git apply ../mypatch/curn_git.patch
-git apply ../mypatch/docker-ce.patch
+git apply mypatch/curn_git.patch
+git apply mypatch/docker-ce.patch
 
 cat recipes-containers/crun/crun_git.bb
 cat recipes-containers/docker/docker-ce_git.bb
