@@ -16,8 +16,8 @@ ls -l mypatch/docker-ce.patch
 cat mypatch/docker-ce.patch
 cd meta-virtualization
 
-git apply /mypatch/curn_git.patch
-git apply /mypatch/docker-ce.patch
+git apply ../mypatch/curn_git.patch
+git apply ../mypatch/docker-ce.patch
 
 cat recipes-containers/crun/crun_git.bb
 cat recipes-containers/docker/docker-ce_git.bb
