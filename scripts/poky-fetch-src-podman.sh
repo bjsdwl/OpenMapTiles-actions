@@ -17,7 +17,7 @@ cat mypatch/docker-ce.patch
 cd meta-virtualization
 pwd
 
-git apply ../../mypatch/curn_git.patch
+git apply ../mypatch/curn_git.patch
 git apply ../mypatch/docker-ce.patch
 
 cat recipes-containers/crun/crun_git.bb
