@@ -11,8 +11,8 @@ git clone https://github.com/koenkooi/meta-kodi.git -b master-next
 git clone git://github.com/kraj/meta-openwrt.git -b hardknott 
 
 cd meta-virtualization
-git apply /Poky/mypatch/curn_git.patch
-git apply /Poky/mypatch/docker-ce.patch
+git apply /mypatch/curn_git.patch
+git apply /mypatch/docker-ce.patch
 ls recipes-containers/crun/crun_git.bb
 ls recipes-containers/docker/docker-ce_git.bb
 cd ../
