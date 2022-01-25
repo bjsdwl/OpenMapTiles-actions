@@ -12,8 +12,8 @@ git clone git://github.com/kraj/meta-openwrt.git -b hardknott
 pwd 
 ls -l
 ls -l mypatch/
-ls -l /mypatch/docker-ce.patch
-
+ls -l mypatch/docker-ce.patch
+cat mypatch/docker-ce.patch
 cd meta-virtualization
 
 git apply /mypatch/curn_git.patch
