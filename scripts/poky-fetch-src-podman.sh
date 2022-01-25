@@ -16,7 +16,9 @@ ls -l mypatch/docker-ce.patch
 cat mypatch/docker-ce.patch
 cd meta-virtualization
 pwd
-
+echo "dir dir dir:"
+ls -l
+ls -l ../mypatch/curn_git.patch
 git apply ../mypatch/curn_git.patch
 git apply ../mypatch/docker-ce.patch
 
