@@ -17,7 +17,9 @@ jobs:
           sudo mkdir -p /Poky && sudo -E chmod 777 /Poky
           sudo mkdir -p /UpReleaseArtifact && sudo -E chmod 777 /UpReleaseArtifact
           sudo mkdir -p /Poky/myscripts && sudo -E chmod 777 /Poky/myscripts
+          sudo mkdir -p /Poky/mypatch && sudo -E chmod 777 /Poky/mypatch
           cp scripts/*.sh /Poky/myscripts
+          cp patch/*.patch /Poky/mypatch
           chmod +x /Poky/myscripts/*.sh
           /Poky/myscripts/extern-disk-space.sh
           /Poky/myscripts/install-yocto-need-pakages.sh

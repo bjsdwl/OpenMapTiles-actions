@@ -2,13 +2,20 @@
 git clone --depth 1 git://git.yoctoproject.org/poky -b hardknott  poky
 git clone https://github.com.cnpmjs.org/superna9999/meta-meson.git -b hardknott 
 git clone git://git.openembedded.org/meta-openembedded -b hardknott 
-git clone https://github.com/EzEmbedded/meta-virtualization.git -b hardknott 
+git clone https://github.com/MontaVista-OpenSourceTechnology/meta-virtualization.git -b hardknott 
 git clone git://git.yoctoproject.org/meta-security -b hardknott 
 git clone git://github.com/kraj/meta-clang -b hardknott  
 git clone git://git.openembedded.org/meta-python2 -b hardknott  
 git clone https://github.com/OSSystems/meta-browser.git -b master 
 git clone https://github.com/koenkooi/meta-kodi.git -b master-next 
 git clone git://github.com/kraj/meta-openwrt.git -b hardknott 
+
+cd meta-virtualization
+git apply /Poky/mypatch/curn_git.patch
+git apply /Poky/mypatch/docker-ce.patch
+ls recipes-containers/crun/crun_git.bb
+ls recipes-containers/docker/docker-ce_git.bb
+cd ../
 
 pwd 
 ls -al
@@ -53,7 +60,7 @@ sed -i '$a\PACKAGE_CLASSES ?= "package_ipk"'  conf/local.conf
 
 # podman: cockpit podman podman-compose crun cgroup-lite rng-tools procps ca-certificates python3-setuptools python3-pyyaml python3-json
 # docker-ce: cockpit docker-ce docker-ce-contrib python3 python3-docker-compose
-# sed -i '$a\IMAGE_INSTALL_append += " kodi gstreamer1.0-plugins-good ffmpeg chromium-x11 x11vnc vlc mpv cockpit podman podman-compose crun cgroup-lite rng-tools procps ca-certificates python3-setuptools python3-pyyaml python3-json docker-ce docker-ce-contrib python3 python3-docker-compose"'  conf/local.conf
+sed -i '$a\IMAGE_INSTALL_append += " kodi gstreamer1.0-plugins-good ffmpeg chromium-x11 x11vnc vlc mpv cockpit podman podman-compose crun cgroup-lite rng-tools procps ca-certificates python3-setuptools python3-pyyaml python3-json docker-ce docker-ce-contrib python3 python3-docker-compose"'  conf/local.conf
 
 # cat /home/yocto-crops/Zdownloads/collect-srcrevs.txt >> conf/local.conf
 
@@ -73,5 +80,5 @@ cat conf/bblayers.conf
 # bitbake amlogic-image-headless-sd  --runonly=fetch 
 # bitbake amlogic-image-headless-sd -c populate_sdk_ext --runonly=fetch
 # bitbake openwrt-image-full  -c populate_sdk_ext --runonly=fetch #openwrt-image-base/openwrt-image-full
-bitbake chromium # amlogic-image-sato -c populate_sdk_ext  --runonly=fetch
+bitbake  amlogic-image-sato -c populate_sdk_ext  --runonly=fetch
 buildhistory-collect-srcrevs -a > collect-srcrevs.txt
