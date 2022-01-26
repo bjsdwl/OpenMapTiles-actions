@@ -13,15 +13,15 @@ cp -r mypatch/ meta-virtualization/
 pwd 
 ls -l
 ls -l mypatch/
-ls -l mypatch/docker-ce.patch
-cat mypatch/docker-ce.patch
+ls -l mypatch/recipes-containers.patch
+cat mypatch/recipes-containers.patch
 cd meta-virtualization
 pwd
 echo "dir dir dir:"
 ls -l
-ls -l ../mypatch/curn_git.patch
-git apply mypatch/curn_git.patch
-git apply mypatch/docker-ce.patch
+ls -l ../mypatch/recipes-containers.patch
+git apply mypatch/recipes-containers.patch
+
 
 cat recipes-containers/crun/crun_git.bb
 cat recipes-containers/docker/docker-ce_git.bb
