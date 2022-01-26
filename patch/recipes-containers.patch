@@ -23,4 +23,3 @@ index fa4b913..41f53c8 100644
 +		install -m 0755 ${WORKDIR}/docker.init ${D}${sysconfdir}/init.d/docker.init
  		install -d ${D}${systemd_unitdir}/system
  		install -m 644 ${S}/src/import/components/engine/contrib/init/systemd/docker.* ${D}/${systemd_unitdir}/system
- 		# replaces one copied from above with one that uses the local registry for a mirror
