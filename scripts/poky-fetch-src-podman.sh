@@ -20,7 +20,7 @@ pwd
 echo "dir dir dir:"
 ls -l
 ls -l ../mypatch/recipes-containers.patch
-git apply mypatch/recipes-containers.patch
+git apply ../mypatch/recipes-containers.patch
 
 
 cat recipes-containers/crun/crun_git.bb
