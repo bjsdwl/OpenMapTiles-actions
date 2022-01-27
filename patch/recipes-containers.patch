@@ -19,8 +19,8 @@ index fa4b913..1d43435 100644
  	cp ${WORKDIR}/git/libnetwork/bin/docker-proxy* ${D}/${bindir}/docker-proxy
  
  	if ${@bb.utils.contains('DISTRO_FEATURES','systemd','true','false',d)}; then
-+           install -d ${D}${sysconfdir}/init.d 
-+           install -m 0755 ${WORKDIR}/docker.init ${D}${sysconfdir}/init.d/docker.init
++	    install -d ${D}${sysconfdir}/init.d 
++	    install -m 0755 ${WORKDIR}/docker.init ${D}${sysconfdir}/init.d/docker.init
  		install -d ${D}${systemd_unitdir}/system
  		install -m 644 ${S}/src/import/components/engine/contrib/init/systemd/docker.* ${D}/${systemd_unitdir}/system
  		# replaces one copied from above with one that uses the local registry for a mirror
