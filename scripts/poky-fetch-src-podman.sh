@@ -9,12 +9,6 @@ git clone git://git.openembedded.org/meta-python2 -b hardknott
 git clone https://github.com/OSSystems/meta-browser.git -b master 
 git clone https://github.com/koenkooi/meta-kodi.git -b master-next 
 git clone git://github.com/kraj/meta-openwrt.git -b hardknott 
-cp -r mypatch/ meta-virtualization/
-pwd 
-ls -l
-ls -l mypatch/
-ls -l mypatch/recipes-containers.patch
-cat mypatch/recipes-containers.patch
 cd meta-virtualization
 pwd
 echo "dir dir dir:"
