@@ -9,9 +9,9 @@ git clone git://git.openembedded.org/meta-python2 -b hardknott
 git clone https://github.com/OSSystems/meta-browser.git -b master 
 git clone https://github.com/koenkooi/meta-kodi.git -b master-next 
 git clone git://github.com/kraj/meta-openwrt.git -b hardknott 
-echo "apply recipes-containers.patch"
+echo "apply recipes-containers-hardknott.patch"
 cd meta-virtualization
-git apply ../mypatch/recipes-containers.patch
+git apply ../mypatch/recipes-containers-hardknott.patch
 # cat recipes-containers/crun/crun_git.bb
 # cat recipes-containers/docker/docker-ce_git.bb
 cd ../
