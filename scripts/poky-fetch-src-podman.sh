@@ -10,10 +10,9 @@ git clone https://github.com/OSSystems/meta-browser.git -b master
 git clone https://github.com/koenkooi/meta-kodi.git -b master-next 
 git clone git://github.com/kraj/meta-openwrt.git -b hardknott 
 cd meta-virtualization
-pwd
-echo "dir dir dir:"
-ls -l
-ls -l ../mypatch/recipes-containers.patch
+echo "check recipes-containers.patch"
+cat ../mypatch/recipes-containers.patch
+echo "apply recipes-containers.patch"
 git apply ../mypatch/recipes-containers.patch
 
 
