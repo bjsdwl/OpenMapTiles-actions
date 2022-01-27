@@ -12,8 +12,8 @@ git clone git://github.com/kraj/meta-openwrt.git -b hardknott
 echo "apply recipes-containers.patch"
 cd meta-virtualization
 git apply ../mypatch/recipes-containers.patch
-cat recipes-containers/crun/crun_git.bb
-cat recipes-containers/docker/docker-ce_git.bb
+# cat recipes-containers/crun/crun_git.bb
+# cat recipes-containers/docker/docker-ce_git.bb
 cd ../
 pwd 
 
