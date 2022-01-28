@@ -57,7 +57,8 @@ sed -i '$a\INHERIT += "rm_work"'  conf/local.conf                ###############
 
 # podman: cockpit podman podman-compose crun cgroup-lite rng-tools procps ca-certificates python3-setuptools python3-pyyaml python3-json
 # docker-ce: cockpit docker-ce docker-ce-contrib python3 python3-docker-compose
-sed -i '$a\IMAGE_INSTALL_append += " kodi gstreamer1.0-plugins-good ffmpeg chromium-x11 x11vnc vlc mpv cockpit podman podman-compose crun cgroup-lite rng-tools procps ca-certificates python3-setuptools python3-pyyaml python3-json docker-ce docker-ce-contrib python3 python3-docker-compose"'  conf/local.conf
+# sed -i '$a\IMAGE_INSTALL_append += " kodi gstreamer1.0-plugins-good ffmpeg chromium-x11 x11vnc vlc mpv cockpit podman podman-compose crun cgroup-lite rng-tools procps ca-certificates python3-setuptools python3-pyyaml python3-json docker-ce docker-ce-contrib python3 python3-docker-compose"'  conf/local.conf
+sed -i '$a\IMAGE_INSTALL_append += "  cockpit podman podman-compose crun cgroup-lite rng-tools procps ca-certificates python3-setuptools python3-pyyaml python3-json docker-ce docker-ce-contrib python3 python3-docker-compose"'  conf/local.conf
 
 # cat /home/yocto-crops/Zdownloads/collect-srcrevs.txt >> conf/local.conf
 
@@ -77,5 +78,5 @@ cat conf/bblayers.conf
 # bitbake amlogic-image-headless-sd  --runonly=fetch 
 # bitbake amlogic-image-headless-sd -c populate_sdk_ext --runonly=fetch
 # bitbake openwrt-image-full  -c populate_sdk_ext --runonly=fetch #openwrt-image-base/openwrt-image-full
-bitbake  amlogic-image-sato -c populate_sdk_ext  --runonly=fetch
+bitbake  amlogic-image-headless-sd # amlogic-image-sato -c populate_sdk_ext  --runonly=fetch
 buildhistory-collect-srcrevs -a > collect-srcrevs.txt
