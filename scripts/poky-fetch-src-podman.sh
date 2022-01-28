@@ -12,8 +12,8 @@ git clone git://github.com/kraj/meta-openwrt.git -b hardknott
 echo "apply recipes-containers-hardknott.patch"
 cd meta-virtualization
 git apply ../mypatch/recipes-containers-hardknott.patch
-cat recipes-containers/crun/crun_git.bb
-cat recipes-containers/docker/docker-ce_git.bb
+# cat recipes-containers/crun/crun_git.bb
+# cat recipes-containers/docker/docker-ce_git.bb
 cd ../
 pwd 
 
@@ -43,6 +43,7 @@ sed -i '/^#SDKMA/s/#\(.*\)=.*$/\1= "x86_64"/g'  conf/local.conf
 sed -i '$a\BB_GENERATE_MIRROR_TARBALLS = "1"'  conf/local.conf 
 sed -i '$a\INHERIT += "buildhistory"'  conf/local.conf
 sed -i '$a\BUILDHISTORY_COMMIT = "1"'  conf/local.conf
+sed -i '$a\INHERIT += "rm_work"'  conf/local.conf                ############################ 
 
 # sed -i '$a\BB_NUMBER_THREADS = "16"'  conf/local.conf 
 # sed -i '$a\PARALLEL_MAKE = "-j 16"'  conf/local.conf
@@ -53,7 +54,7 @@ sed -i '$a\LICENSE_FLAGS_WHITELIST += " commercial_mpg123 commercial commercial_
 # systemd pam procd 
 sed -i '$a\DISTRO_FEATURES_append = " virtualization systemd pam procd"'  conf/local.conf # cockpit---pam  podman---virtualization podman---systemd
 sed -i '$a\PACKAGE_CLASSES ?= "package_ipk"'  conf/local.conf
-sed -i '$a\INHERIT += "rm_work"'  conf/local.conf                ############################        
+       
 
 # podman: cockpit podman podman-compose crun cgroup-lite rng-tools procps ca-certificates python3-setuptools python3-pyyaml python3-json
 # docker-ce: cockpit docker-ce docker-ce-contrib python3 python3-docker-compose
@@ -78,5 +79,5 @@ cat conf/bblayers.conf
 # bitbake amlogic-image-headless-sd  --runonly=fetch 
 # bitbake amlogic-image-headless-sd -c populate_sdk_ext --runonly=fetch
 # bitbake openwrt-image-full  -c populate_sdk_ext --runonly=fetch #openwrt-image-base/openwrt-image-full
-bitbake  amlogic-image-headless-sd # amlogic-image-sato -c populate_sdk_ext  --runonly=fetch
+bitbake  docker-ce # amlogic-image-sato -c populate_sdk_ext  --runonly=fetch
 buildhistory-collect-srcrevs -a > collect-srcrevs.txt
