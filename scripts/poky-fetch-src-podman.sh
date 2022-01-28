@@ -79,5 +79,5 @@ cat conf/bblayers.conf
 # bitbake amlogic-image-headless-sd  --runonly=fetch 
 # bitbake amlogic-image-headless-sd -c populate_sdk_ext --runonly=fetch
 # bitbake openwrt-image-full  -c populate_sdk_ext --runonly=fetch #openwrt-image-base/openwrt-image-full
-bitbake  docker-ce # amlogic-image-sato -c populate_sdk_ext  --runonly=fetch
+bitbake  docker-ce docker-ce-contrib python3 python3-docker-compose # amlogic-image-sato -c populate_sdk_ext  --runonly=fetch
 buildhistory-collect-srcrevs -a > collect-srcrevs.txt
