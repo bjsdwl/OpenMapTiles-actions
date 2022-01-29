@@ -79,5 +79,5 @@ cat conf/bblayers.conf
 # bitbake amlogic-image-headless-sd  --runonly=fetch 
 # bitbake amlogic-image-headless-sd -c populate_sdk_ext --runonly=fetch
 # bitbake openwrt-image-full  -c populate_sdk_ext --runonly=fetch #openwrt-image-base/openwrt-image-full
-bitbake amlogic-image-headless-sd # amlogic-image-sato -c populate_sdk_ext  --runonly=fetch
+bitbake cockpit && bitbake  podman && bitbake podman-compose           # amlogic-image-headless-sd # amlogic-image-sato -c populate_sdk_ext  --runonly=fetch
 buildhistory-collect-srcrevs -a > collect-srcrevs.txt
