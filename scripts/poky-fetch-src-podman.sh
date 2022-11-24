@@ -1,6 +1,6 @@
 #!/bin/bash
 git clone https://github.com/openmaptiles/openmaptiles.git -b master
-&& cd OSSystems
+cd openmaptiles
 make
 make start-db
 make download area=albania
