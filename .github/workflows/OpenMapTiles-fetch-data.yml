@@ -34,9 +34,9 @@ jobs:
           make import-data
           make import-osm
           make import-wikidata
-          make generate-bbox-file
           make import-sql
-          make generate-tiles
+          make generate-bbox-file
+          make generate-tiles-pg
           du -h data/*
           # /OpenMapTiles/myscripts/poky-fetch-src-podman.sh  
           ls -al /UpReleaseArtifact
