@@ -30,7 +30,7 @@ jobs:
           cd openmaptiles
           make
           make start-db
-          make download area=china
+          make download area=beijing
           make import-osm
           make import-wikidata
           make import-sql
