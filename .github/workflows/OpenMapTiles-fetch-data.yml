@@ -38,7 +38,7 @@ jobs:
           make generate-bbox-file
           du -h data/*
           docker ps
-          docker-compose exec postgres pg_dumpall -c -U openmaptiles openmaptiles --no-owner | gzip -9 > openmaptilesdb-dump.sql.gz
+          docker-compose exec openmaptiles_postgres_1 pg_dumpall -c -U openmaptiles openmaptiles --no-owner | gzip -9 > openmaptilesdb-dump.sql.gz
           cp openmaptilesdb-dump.sql.gz /UpReleaseArtifact
           make generate-tiles-pg
           ls -al /UpReleaseArtifact
