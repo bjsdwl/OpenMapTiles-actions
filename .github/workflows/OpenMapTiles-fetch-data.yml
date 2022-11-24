@@ -32,7 +32,7 @@ jobs:
           make start-db
           make download area=beijing
           make import-osm
-          make import-wikidata
+          # make import-wikidata
           make import-sql
           # /OpenMapTiles/myscripts/poky-fetch-src-podman.sh  
           ls -al /UpReleaseArtifact
