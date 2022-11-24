@@ -39,7 +39,7 @@ jobs:
           docker ps
           docker-compose exec -T postgres pg_dump -U openmaptiles openmaptiles --no-owner | gzip -9  > openmaptilesdb-dump.sql.gz
           cp openmaptilesdb-dump.sql.gz /UpReleaseArtifact
-          make generate-tiles-pg
+          # make generate-tiles-pg
           ls -al /UpReleaseArtifact
       - name: clear src release    #v1.0.0 is src
         uses: dev-drprasad/delete-tag-and-release@v0.2.0
