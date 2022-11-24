@@ -30,10 +30,11 @@ jobs:
           cd openmaptiles
           make
           make start-db
-          make download area=china
+          make download area=beijing
           make import-data
           make import-osm
           make import-wikidata
+          make generate-bbox-file
           make import-sql
           # /OpenMapTiles/myscripts/poky-fetch-src-podman.sh  
           ls -al /UpReleaseArtifact
