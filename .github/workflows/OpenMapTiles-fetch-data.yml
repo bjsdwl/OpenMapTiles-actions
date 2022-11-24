@@ -1,0 +1,50 @@
+name: OpenMapTiles-Fetch-Data
+on:
+  workflow_dispatch:
+env:
+  TZ: Asia/Shanghai
+
+jobs:
+  fetch-src:
+    runs-on: ubuntu-latest
+    # if: github.event.repository.owner.id == github.event.sender.id
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Initialization running environment
+        run: |
+          sudo ln -sf /bin/bash /bin/sh 
+          sudo mkdir -p /OpenMapTiles && sudo -E chmod 777 /OpenMapTiles
+          sudo mkdir -p /UpReleaseArtifact && sudo -E chmod 777 /UpReleaseArtifact
+          sudo mkdir -p /OpenMapTiles/myscripts && sudo -E chmod 777 /OpenMapTiles/myscripts
+          sudo mkdir -p /OpenMapTiles/mypatch && sudo -E chmod 777 /OpenMapTiles/mypatch
+          cp scripts/*.sh /OpenMapTiles/myscripts
+          cp patch/*.patch /OpenMapTiles/mypatch
+          chmod 777 /OpenMapTiles/mypatch/*.patch
+          chmod +x /OpenMapTiles/myscripts/*.sh
+          /OpenMapTiles/myscripts/extern-disk-space.sh
+      - name: fetch pack pakage src 
+        run: |
+          cd /OpenMapTiles
+          git clone https://github.com/openmaptiles/openmaptiles.git
+          cd OpenMapTiles
+          make
+          make start-db
+          make download area=albania
+          make import-osm
+          make import-wikidata
+          make import-sql          
+          ls -al /UpReleaseArtifact
+      - name: clear src release    #v1.0.0 is src
+        uses: dev-drprasad/delete-tag-and-release@v0.2.0
+        with:
+          delete_release: true
+          tag_name: v1.0.0   #v1.0.0 is src
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      - name: release src    #v1.0.0 is src
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: "/UpReleaseArtifact/*"
+          token: ${{ secrets.GITHUB_TOKEN }}
+          tag:  "v1.0.0"    #v1.0.0 is src
