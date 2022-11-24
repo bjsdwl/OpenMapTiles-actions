@@ -5,7 +5,7 @@ env:
   TZ: Asia/Shanghai
 
 jobs:
-  fetch-src:
+  OpenMapTiles-Fetch-Data:
     runs-on: ubuntu-latest
     # if: github.event.repository.owner.id == github.event.sender.id
 
@@ -26,14 +26,7 @@ jobs:
       - name: fetch pack pakage src 
         run: |
           cd /OpenMapTiles
-          git clone https://github.com/openmaptiles/openmaptiles.git
-          cd OpenMapTiles
-          make
-          make start-db
-          make download area=albania
-          make import-osm
-          make import-wikidata
-          make import-sql          
+          /OpenMapTiles/myscripts/poky-fetch-src-podman.sh  
           ls -al /UpReleaseArtifact
       - name: clear src release    #v1.0.0 is src
         uses: dev-drprasad/delete-tag-and-release@v0.2.0
