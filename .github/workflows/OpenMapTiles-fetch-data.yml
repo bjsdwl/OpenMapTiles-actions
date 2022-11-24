@@ -22,11 +22,19 @@ jobs:
           cp patch/*.patch /OpenMapTiles/mypatch
           chmod 777 /OpenMapTiles/mypatch/*.patch
           chmod +x /OpenMapTiles/myscripts/*.sh
-       #   /OpenMapTiles/myscripts/extern-disk-space.sh
+          /OpenMapTiles/myscripts/extern-disk-space.sh
       - name: fetch pack pakage src 
         run: |
           cd /OpenMapTiles
-          /OpenMapTiles/myscripts/poky-fetch-src-podman.sh  
+          git clone https://github.com/openmaptiles/openmaptiles.git -b master
+          cd openmaptiles
+          make
+          make start-db
+          make download area=albania
+          make import-osm
+          make import-wikidata
+          make import-sql
+          # /OpenMapTiles/myscripts/poky-fetch-src-podman.sh  
           ls -al /UpReleaseArtifact
       - name: clear src release    #v1.0.0 is src
         uses: dev-drprasad/delete-tag-and-release@v0.2.0
