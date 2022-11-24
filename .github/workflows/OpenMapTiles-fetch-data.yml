@@ -36,6 +36,8 @@ jobs:
           make import-wikidata
           make generate-bbox-file
           make import-sql
+          make generate-tiles
+          du -h data/*
           # /OpenMapTiles/myscripts/poky-fetch-src-podman.sh  
           ls -al /UpReleaseArtifact
       - name: clear src release    #v1.0.0 is src
