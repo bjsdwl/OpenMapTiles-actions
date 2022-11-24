@@ -26,7 +26,7 @@ jobs:
       - name: fetch pack pakage src 
         run: |
           cd /OpenMapTiles
-          git clone https://github.com/openmaptiles/openmaptiles.git -b master
+          git clone https://github.com/EzEmbedded/openmaptiles.git -b master
           cd openmaptiles
           make
           make start-db
