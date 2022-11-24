@@ -1,5 +1,5 @@
 #!/bin/bash
-git clone https://github.com/openmaptiles/openmaptiles.git
+git clone https://github.com/openmaptiles/openmaptiles.git -b master
 cd OpenMapTiles
 make
 make start-db
