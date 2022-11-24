@@ -31,6 +31,7 @@ jobs:
           make
           make start-db
           make download area=beijing
+          make import-data
           make import-osm
           # make import-wikidata
           make import-sql
