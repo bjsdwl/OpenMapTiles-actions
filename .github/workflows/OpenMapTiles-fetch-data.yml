@@ -28,7 +28,7 @@ jobs:
           cp patch/*.patch /OpenMapTiles/mypatch
           chmod 777 /OpenMapTiles/mypatch/*.patch
           chmod +x /OpenMapTiles/myscripts/*.sh
-       #   /OpenMapTiles/myscripts/extern-disk-space.sh
+          /OpenMapTiles/myscripts/extern-disk-space.sh
       - name: fetch pack pakage src 
         run: |
           cd /OpenMapTiles
@@ -37,8 +37,8 @@ jobs:
           make
           make start-db
           make import-data
-          curl -o data/custom.osm.pbf '${{ github.event.inputs.file_URL }}'
-          # make download area=china   
+          # curl -o data/custom.osm.pbf '${{ github.event.inputs.file_URL }}'
+          make download area=china   
           make import-osm
           make import-wikidata
           make import-sql
