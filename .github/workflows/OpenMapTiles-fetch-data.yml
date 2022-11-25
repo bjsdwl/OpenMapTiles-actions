@@ -22,10 +22,7 @@ jobs:
           sudo mkdir -p /OpenMapTiles && sudo -E chmod 777 /OpenMapTiles
           sudo mkdir -p /UpReleaseArtifact && sudo -E chmod 777 /UpReleaseArtifact
           sudo mkdir -p /OpenMapTiles/myscripts && sudo -E chmod 777 /OpenMapTiles/myscripts
-          sudo mkdir -p /OpenMapTiles/mypatch && sudo -E chmod 777 /OpenMapTiles/mypatch
           cp scripts/*.sh /OpenMapTiles/myscripts
-          cp patch/*.patch /OpenMapTiles/mypatch
-          chmod 777 /OpenMapTiles/mypatch/*.patch
           chmod +x /OpenMapTiles/myscripts/*.sh
           /OpenMapTiles/myscripts/extern-disk-space.sh
       - name: fetch pack pakage src 
@@ -36,8 +33,8 @@ jobs:
           make
           make start-db
           make import-data
-          curl -o data/custom.osm.pbf '${{ github.event.inputs.file_URL }}'
-          # make download area=china   
+          # curl -o data/custom.osm.pbf '${{ github.event.inputs.file_URL }}'
+          make download area=beijing   
           make import-osm
           make import-wikidata
           make import-sql
