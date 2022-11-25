@@ -15,6 +15,7 @@ jobs:
         run: |
           sudo ln -sf /bin/bash /bin/sh 
           sudo mkdir -p /OpenMapTiles && sudo -E chmod 777 /OpenMapTiles
+          sudo mkdir -p /OpenMapTiles/data && sudo -E chmod 777 /OpenMapTiles/data
           sudo mkdir -p /UpReleaseArtifact && sudo -E chmod 777 /UpReleaseArtifact
           sudo mkdir -p /OpenMapTiles/myscripts && sudo -E chmod 777 /OpenMapTiles/myscripts
           sudo mkdir -p /OpenMapTiles/mypatch && sudo -E chmod 777 /OpenMapTiles/mypatch
@@ -37,8 +38,9 @@ jobs:
           make import-sql
           du -h data/*
           docker ps
-          docker-compose exec -T postgres pg_dump -U openmaptiles openmaptiles --no-owner | gzip -9  > openmaptilesdb-dump.sql.gz
-          cp openmaptilesdb-dump.sql.gz /UpReleaseArtifact
+          docker-compose exec -T postgres pg_dump -U openmaptiles openmaptiles --no-owner | gzip -9  > ./data/openmaptilesdb-dump.sql.gz
+          tar  cvzf - data/ | split -b 2040m - db-data.tar.gz.
+          mv db-data.tar.gz.* /UpReleaseArtifact
           # make generate-tiles-pg
           ls -al /UpReleaseArtifact
       - name: clear src release    #v1.0.0 is src
