@@ -1,6 +1,11 @@
 name: OpenMapTiles-Fetch-Data
 on:
   workflow_dispatch:
+    inputs:
+      file_URL:
+        description: 'input https://extract.bbbike.org/ osm file URL'
+        required: true
+        default: 'https://download.bbbike.org/osm/extract/planet_115.655,39.269_117.236,40.494.osm.pbf'  
 env:
   TZ: Asia/Shanghai
 
@@ -31,7 +36,8 @@ jobs:
           cd openmaptiles
           make
           make start-db
-          make import-data
+          # make import-data
+          curl -o data/custom.osm.pbf '${{ github.event.inputs.file_URL }}'
           make download area=china   
           make import-osm
           make import-wikidata
