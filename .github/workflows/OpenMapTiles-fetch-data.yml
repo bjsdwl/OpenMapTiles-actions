@@ -25,7 +25,7 @@ jobs:
           cp scripts/*.sh /OpenMapTiles/myscripts
           chmod +x /OpenMapTiles/myscripts/*.sh
           /OpenMapTiles/myscripts/extern-disk-space.sh
-      - name: fetch pack pakage src 
+      - name: Start OpenMapTiles 
         run: |
           cd /OpenMapTiles
           git clone https://github.com/EzEmbedded/openmaptiles.git -b master
