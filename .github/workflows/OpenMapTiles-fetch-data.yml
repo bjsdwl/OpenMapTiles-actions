@@ -20,7 +20,6 @@ jobs:
         run: |
           sudo ln -sf /bin/bash /bin/sh 
           sudo mkdir -p /OpenMapTiles && sudo -E chmod 777 /OpenMapTiles
-          sudo mkdir -p /OpenMapTiles/data && sudo -E chmod 777 /OpenMapTiles/data
           sudo mkdir -p /UpReleaseArtifact && sudo -E chmod 777 /UpReleaseArtifact
           sudo mkdir -p /OpenMapTiles/myscripts && sudo -E chmod 777 /OpenMapTiles/myscripts
           sudo mkdir -p /OpenMapTiles/mypatch && sudo -E chmod 777 /OpenMapTiles/mypatch
@@ -37,16 +36,16 @@ jobs:
           make
           make start-db
           make import-data
-          # curl -o data/custom.osm.pbf '${{ github.event.inputs.file_URL }}'
-          make download area=china   
+          curl -o data/custom.osm.pbf '${{ github.event.inputs.file_URL }}'
+          # make download area=china   
           make import-osm
           make import-wikidata
           make import-sql
           du -h data/*
           docker ps
           docker-compose exec -T postgres pg_dump -U openmaptiles openmaptiles --no-owner | gzip -9  > openmaptilesdb-dump.sql.gz
-          tar  cvzf - openmaptilesdb-dump.sql.gz | split -b 2040m - db-data.tar.gz.
-          mv db-data.tar.gz.* /UpReleaseArtifact
+          tar  cvzf - openmaptilesdb-dump.sql.gz | split -b 2040m - db-dump.tar.gz.
+          mv db-dump.tar.gz.* /UpReleaseArtifact
           # make generate-tiles-pg
           ls -al /UpReleaseArtifact
       - name: clear src release    #v1.0.0 is src
