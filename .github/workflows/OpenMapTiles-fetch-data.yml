@@ -38,8 +38,8 @@ jobs:
           make import-sql
           du -h data/*
           docker ps
-          docker-compose exec -T postgres pg_dump -U openmaptiles openmaptiles --no-owner | gzip -9  > ./data/openmaptilesdb-dump.sql.gz
-          tar  cvzf - data/ | split -b 2040m - db-data.tar.gz.
+          docker-compose exec -T postgres pg_dump -U openmaptiles openmaptiles --no-owner | gzip -9  > openmaptilesdb-dump.sql.gz
+          tar  cvzf - openmaptilesdb-dump.sql.gz | split -b 2040m - db-data.tar.gz.
           mv db-data.tar.gz.* /UpReleaseArtifact
           # make generate-tiles-pg
           ls -al /UpReleaseArtifact
