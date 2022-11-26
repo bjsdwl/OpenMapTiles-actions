@@ -33,8 +33,8 @@ jobs:
           make
           make start-db
           make import-data
-          curl -o data/custom.osm.pbf '${{ github.event.inputs.file_URL }}'
-          # make download area=beijing   
+          # curl -o data/custom.osm.pbf '${{ github.event.inputs.file_URL }}'
+          make download area=beijing   
           make import-osm
           make import-wikidata
           make import-sql
