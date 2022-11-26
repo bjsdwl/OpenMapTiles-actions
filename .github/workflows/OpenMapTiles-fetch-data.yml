@@ -34,7 +34,8 @@ jobs:
           make start-db
           make import-data
           # curl -o data/custom.osm.pbf '${{ github.event.inputs.file_URL }}'
-          make download area=new-york-latest   
+          curl -o data/new-york.osm.pbf https://download.geofabrik.de/north-america/us/new-york-latest.osm.pbf
+          # make download area=new-york-latest   
           make import-osm
           make import-wikidata
           make import-sql
