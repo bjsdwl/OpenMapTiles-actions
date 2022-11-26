@@ -44,6 +44,7 @@ jobs:
           # tar  cvzf - openmaptilesdb-dump.sql.gz | split -b 2040m - db-dump.tar.gz.
           # mv db-dump.tar.gz.* /UpReleaseArtifact
           make generate-tiles-pg
+          du -h data/*
           ls -al /UpReleaseArtifact
       - name: clear src release    #v1.0.0 is src
         uses: dev-drprasad/delete-tag-and-release@v0.2.0
